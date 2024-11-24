@@ -28,8 +28,7 @@ class HomeView extends StackedView<HomeViewModel> {
                   children: [
                     Row(
                       children: [
-                        SvgPicture.asset("assets/avatar.svg"),
-                        horizontalSpaceSmall,
+                        Image.asset("assets/profile.png"),                        horizontalSpaceSmall,
                         const Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
