@@ -10,6 +10,7 @@ import 'package:tickvent/ui/views/ticket/ticket_view.dart';
 import 'package:tickvent/ui/views/settings/settings_view.dart';
 import 'package:tickvent/ui/views/view_ticket/view_ticket_view.dart';
 import 'package:tickvent/ui/views/host_event/host_event_view.dart';
+import 'package:tickvent/ui/views/featured_event/featured_event_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -22,6 +23,7 @@ import 'package:tickvent/ui/views/host_event/host_event_view.dart';
     MaterialRoute(page: SettingsView),
     MaterialRoute(page: ViewTicketView),
     MaterialRoute(page: HostEventView),
+    MaterialRoute(page: FeaturedEventView),
 // @stacked-route
   ],
   dependencies: [

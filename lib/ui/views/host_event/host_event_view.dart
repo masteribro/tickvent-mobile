@@ -26,26 +26,25 @@ class HostEventView extends StackedView<HostEventViewModel> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     viewModel.navigationService.back();
                   },
                   child: const Icon(
                     Icons.arrow_back,
-                    color: kcDarkGreyColor,),
+                    color: kcDarkGreyColor,
+                  ),
                 ),
                 SvgPicture.asset("assets/bell.svg"),
-
               ],
             ),
             verticalSpaceMedium,
             Text("Host Event",
-                style: TextStyle(
-                    fontSize: 25, fontWeight: FontWeight.bold)),
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
             verticalSpaceMedium,
             Text("What type of event is this?",
                 style: TextStyle(
-              color: Colors.grey,
-            )),
+                  color: Colors.grey,
+                )),
             verticalSpaceMedium,
             Container(
               height: MediaQuery.of(context).size.height * 0.23,
@@ -54,52 +53,51 @@ class HostEventView extends StackedView<HostEventViewModel> {
                 color: Color(0xffFCE7F6),
                 borderRadius: BorderRadius.circular(10),
               ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Column(
-                children: [
-                  verticalSpaceSmall,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Virtual Event",
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold,
-                          )),
-                      SvgPicture.asset("assets/video.svg"),
-                    ],
-                  ),
-                  verticalSpaceSmall,
-                  Text("Host an online gathering! Perfect for webinars, workshops, or catching up with people anywhere in the world.",
-                      style: TextStyle(
-                          fontSize: 13, color: Colors.grey)),
-                  verticalSpaceSmall,
-                   Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Container(
-                        height: 35,
-                        width: 140,
-                        decoration: BoxDecoration(
-                            color: const Color(0xffEE46BC
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Column(
+                  children: [
+                    verticalSpaceSmall,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Virtual Event",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            )),
+                        SvgPicture.asset("assets/video.svg"),
+                      ],
+                    ),
+                    verticalSpaceSmall,
+                    Text(
+                        "Host an online gathering! Perfect for webinars, workshops, or catching up with people anywhere in the world.",
+                        style: TextStyle(fontSize: 13, color: Colors.grey)),
+                    verticalSpaceSmall,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Container(
+                          height: 35,
+                          width: 140,
+                          decoration: BoxDecoration(
+                              color: const Color(0xffEE46BC),
+                              borderRadius: BorderRadius.circular(15)),
+                          child: Center(
+                            child: const Text(
+                              "Host Virtual Event",
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: kcWhite),
                             ),
-                            borderRadius: BorderRadius.circular(15)),
-                        child: Center(
-                          child: const Text("Host Virtual Event",
-                          style: TextStyle(
-                              fontSize: 12,
-                              fontWeight:  FontWeight.bold,
-                              color: kcWhite),
                           ),
-                        ),
-                      )
-                    ],
-                  )
-
-
-                ],
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
-            ),
             ),
             verticalSpaceMedium,
             Container(
@@ -119,15 +117,16 @@ class HostEventView extends StackedView<HostEventViewModel> {
                       children: [
                         Text("Physical Event",
                             style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
                             )),
                         SvgPicture.asset("assets/routing.svg"),
                       ],
                     ),
                     verticalSpaceSmall,
-                    const Text("Plan an in-person experience! Great for conferences, meetups, or parties where face-to-face connection is key.",
-                        style: TextStyle(
-                            fontSize: 13, color: Colors.grey)),
+                    const Text(
+                        "Plan an in-person experience! Great for conferences, meetups, or parties where face-to-face connection is key.",
+                        style: TextStyle(fontSize: 13, color: Colors.grey)),
                     verticalSpaceSmall,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -136,28 +135,24 @@ class HostEventView extends StackedView<HostEventViewModel> {
                           height: 35,
                           width: 140,
                           decoration: BoxDecoration(
-                              color: const Color(0xff175CD3
-                              ),
+                              color: const Color(0xff175CD3),
                               borderRadius: BorderRadius.circular(15)),
                           child: const Center(
-                            child: Text("Host Physical Event",
+                            child: Text(
+                              "Host Physical Event",
                               style: TextStyle(
                                   fontSize: 12,
-                                  fontWeight:  FontWeight.bold,
+                                  fontWeight: FontWeight.bold,
                                   color: kcWhite),
                             ),
                           ),
                         )
                       ],
                     )
-
-
                   ],
                 ),
               ),
             ),
-
-
           ],
         ),
       ),

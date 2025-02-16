@@ -5,11 +5,13 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i10;
+import 'package:flutter/material.dart' as _i11;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i11;
+import 'package:stacked_services/stacked_services.dart' as _i12;
 import 'package:tickvent/ui/views/explore/explore_view.dart' as _i5;
+import 'package:tickvent/ui/views/featured_event/featured_event_view.dart'
+    as _i10;
 import 'package:tickvent/ui/views/home/home_view.dart' as _i2;
 import 'package:tickvent/ui/views/host_event/host_event_view.dart' as _i9;
 import 'package:tickvent/ui/views/settings/settings_view.dart' as _i7;
@@ -35,6 +37,8 @@ class Routes {
 
   static const hostEventView = '/host-event-view';
 
+  static const featuredEventView = '/featured-event-view';
+
   static const all = <String>{
     homeView,
     startupView,
@@ -44,6 +48,7 @@ class Routes {
     settingsView,
     viewTicketView,
     hostEventView,
+    featuredEventView,
   };
 }
 
@@ -81,54 +86,64 @@ class StackedRouter extends _i1.RouterBase {
       Routes.hostEventView,
       page: _i9.HostEventView,
     ),
+    _i1.RouteDef(
+      Routes.featuredEventView,
+      page: _i10.FeaturedEventView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeView: (data) {
-      return _i10.MaterialPageRoute<dynamic>(
+      return _i11.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
     _i3.StartupView: (data) {
-      return _i10.MaterialPageRoute<dynamic>(
+      return _i11.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.StartupView(),
         settings: data,
       );
     },
     _i4.SignInView: (data) {
-      return _i10.MaterialPageRoute<dynamic>(
+      return _i11.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.SignInView(),
         settings: data,
       );
     },
     _i5.ExploreView: (data) {
-      return _i10.MaterialPageRoute<dynamic>(
+      return _i11.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.ExploreView(),
         settings: data,
       );
     },
     _i6.TicketView: (data) {
-      return _i10.MaterialPageRoute<dynamic>(
+      return _i11.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.TicketView(),
         settings: data,
       );
     },
     _i7.SettingsView: (data) {
-      return _i10.MaterialPageRoute<dynamic>(
+      return _i11.MaterialPageRoute<dynamic>(
         builder: (context) => const _i7.SettingsView(),
         settings: data,
       );
     },
     _i8.ViewTicketView: (data) {
-      return _i10.MaterialPageRoute<dynamic>(
+      return _i11.MaterialPageRoute<dynamic>(
         builder: (context) => const _i8.ViewTicketView(),
         settings: data,
       );
     },
     _i9.HostEventView: (data) {
-      return _i10.MaterialPageRoute<dynamic>(
+      return _i11.MaterialPageRoute<dynamic>(
         builder: (context) => const _i9.HostEventView(),
+        settings: data,
+      );
+    },
+    _i10.FeaturedEventView: (data) {
+      return _i11.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i10.FeaturedEventView(),
         settings: data,
       );
     },
@@ -141,7 +156,7 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i11.NavigationService {
+extension NavigatorStateExtension on _i12.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -254,6 +269,20 @@ extension NavigatorStateExtension on _i11.NavigationService {
         transition: transition);
   }
 
+  Future<dynamic> navigateToFeaturedEventView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.featuredEventView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
   Future<dynamic> replaceWithHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -360,6 +389,20 @@ extension NavigatorStateExtension on _i11.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.hostEventView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithFeaturedEventView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.featuredEventView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:stacked/stacked.dart';
+import 'package:tickvent/app/app.router.dart';
 import 'package:tickvent/ui/common/app_colors.dart';
 import 'package:tickvent/ui/component/text_field_widget.dart';
 import 'package:tickvent/ui/views/explore/widget/event_type.dart';
 
 import '../../common/ui_helpers.dart';
+import '../featured_event/featured_event_view.dart';
 import 'explore_viewmodel.dart';
 
 class ExploreView extends StackedView<ExploreViewModel> {
@@ -18,7 +20,7 @@ class ExploreView extends StackedView<ExploreViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: kcWhite,
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SafeArea(
@@ -142,115 +144,120 @@ class ExploreView extends StackedView<ExploreViewModel> {
                       shrinkWrap: true,
                       itemCount: 5,
                       itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            height: MediaQuery.of(context).size.height * 0.42,
-                            width: MediaQuery.of(context).size.width * 0.8,
-                            decoration: BoxDecoration(
-                              color: kcPrimaryColor.withOpacity(0.2),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Column(
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(
-                                      15), // Rounded on all corners
-                                  child: Image.asset(
-                                    "assets/carnival.png",
-                                    height: MediaQuery.of(context).size.height *
-                                        0.26, // Half of the container's height
-                                    width: double.infinity,
-                                    fit: BoxFit.cover,
+                        return GestureDetector(
+                          onTap: (){
+                            viewModel.navigationService.navigateToFeaturedEventView();
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.42,
+                              width: MediaQuery.of(context).size.width * 0.8,
+                              decoration: BoxDecoration(
+                                color: kcPrimaryColor.withOpacity(0.2),
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: Column(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(
+                                        15), // Rounded on all corners
+                                    child: Image.asset(
+                                      "assets/carnival.png",
+                                      height: MediaQuery.of(context).size.height *
+                                          0.26, // Half of the container's height
+                                      width: double.infinity,
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
-                                ),
-                                verticalSpaceSmall,
-                                Padding(
-                                  padding:
-                                      EdgeInsets.symmetric(horizontal: 8.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text("Abuja Music Concert",
-                                          style: TextStyle(
-                                              fontSize: 17,
-                                              color: kcDarkGreyColor,
-                                              fontWeight: FontWeight.bold)),
-                                      Container(
-                                        height: 35,
-                                        width: 100,
-                                        decoration: BoxDecoration(
-                                            color:
-                                                kcPrimaryColor.withOpacity(0.2),
-                                            borderRadius:
-                                                BorderRadius.circular(15)),
-                                        child: Center(
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              SvgPicture.asset(
-                                                  "assets/ticket.svg"),
-                                              horizontalSpaceTiny,
-                                              Text(
-                                                "20,000",
-                                                style: TextStyle(
-                                                    fontSize: 13,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                            ],
+                                  verticalSpaceSmall,
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 8.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text("Abuja Music Concert",
+                                            style: TextStyle(
+                                                fontSize: 17,
+                                                color: kcDarkGreyColor,
+                                                fontWeight: FontWeight.bold)),
+                                        Container(
+                                          height: 35,
+                                          width: 100,
+                                          decoration: BoxDecoration(
+                                              color:
+                                                  kcPrimaryColor.withOpacity(0.2),
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                          child: Center(
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                SvgPicture.asset(
+                                                    "assets/ticket.svg"),
+                                                horizontalSpaceTiny,
+                                                Text(
+                                                  "20,000",
+                                                  style: TextStyle(
+                                                      fontSize: 13,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                      )
-                                    ],
+                                        )
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 3,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 8.0),
-                                  child: Row(
-                                    children: [
-                                      SvgPicture.asset("assets/calendar.svg"),
-                                      const Text("Friday, June 6th",
-                                          style: TextStyle(
-                                              fontSize: 11,
-                                              color: kcPrimaryColor,
-                                              fontWeight: FontWeight.bold)),
-                                      SizedBox(width: 5),
-                                      SvgPicture.asset("assets/clock.svg"),
-                                      const Text("5:00pm",
-                                          style: TextStyle(
-                                              fontSize: 11,
-                                              color: kcPrimaryColor,
-                                              fontWeight: FontWeight.bold)),
-                                    ],
+                                  SizedBox(
+                                    height: 3,
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 3,
-                                ),
-                                const Padding(
-                                  padding:
-                                      EdgeInsets.symmetric(horizontal: 8.0),
-                                  child: Row(
-                                    children: [
-                                      Icon(Icons.location_on,
-                                          size: 14, color: kcLightGrey),
-                                      SizedBox(width: 1),
-                                      Text("National Stadium, Abuja",
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              color: Colors.grey,
-                                              fontWeight: FontWeight.w400)),
-                                    ],
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8.0),
+                                    child: Row(
+                                      children: [
+                                        SvgPicture.asset("assets/calendar.svg"),
+                                        const Text("Friday, June 6th",
+                                            style: TextStyle(
+                                                fontSize: 11,
+                                                color: kcPrimaryColor,
+                                                fontWeight: FontWeight.bold)),
+                                        SizedBox(width: 5),
+                                        SvgPicture.asset("assets/clock.svg"),
+                                        const Text("5:00pm",
+                                            style: TextStyle(
+                                                fontSize: 11,
+                                                color: kcPrimaryColor,
+                                                fontWeight: FontWeight.bold)),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ],
+                                  SizedBox(
+                                    height: 3,
+                                  ),
+                                  const Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 8.0),
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.location_on,
+                                            size: 14, color: kcLightGrey),
+                                        SizedBox(width: 1),
+                                        Text("National Stadium, Abuja",
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                color: Colors.grey,
+                                                fontWeight: FontWeight.w400)),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         );

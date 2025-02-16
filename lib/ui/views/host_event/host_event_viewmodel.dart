@@ -5,5 +5,4 @@ import '../../../app/app.locator.dart';
 
 class HostEventViewModel extends BaseViewModel {
   final navigationService = locator<NavigationService>();
-
 }

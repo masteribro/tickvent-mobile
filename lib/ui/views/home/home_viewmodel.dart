@@ -1,6 +1,7 @@
 import 'package:tickvent/app/app.bottomsheets.dart';
 import 'package:tickvent/app/app.dialogs.dart';
 import 'package:tickvent/app/app.locator.dart';
+import 'package:tickvent/app/app.router.dart';
 import 'package:tickvent/ui/common/app_strings.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -34,5 +35,9 @@ class HomeViewModel extends BaseViewModel {
       title: ksHomeBottomSheetTitle,
       description: ksHomeBottomSheetDescription,
     );
+  }
+
+  goToViewTicketView() {
+    navigationService.navigateToViewTicketView();
   }
 }
