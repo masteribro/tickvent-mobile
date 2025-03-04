@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tickvent/app/app.bottomsheets.dart';
 import 'package:tickvent/app/app.dialogs.dart';
 import 'package:tickvent/app/app.locator.dart';
@@ -18,14 +19,17 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: Routes.startupView,
-      onGenerateRoute: StackedRouter().onGenerateRoute,
-      navigatorKey: StackedService.navigatorKey,
-      navigatorObservers: [
-        StackedService.routeObserver,
-      ],
-    );
+    return ScreenUtilInit(
+        designSize: const Size(430, 932),
+        minTextAdapt: true,
+        builder: (_, __) => MaterialApp(
+              debugShowCheckedModeBanner: false,
+              initialRoute: Routes.startupView,
+              onGenerateRoute: StackedRouter().onGenerateRoute,
+              navigatorKey: StackedService.navigatorKey,
+              navigatorObservers: [
+                StackedService.routeObserver,
+              ],
+            ));
   }
 }

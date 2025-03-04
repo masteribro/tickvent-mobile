@@ -20,8 +20,10 @@ class FeaturedEventView extends StackedView<FeaturedEventViewModel> {
   ) {
     return Scaffold(
       backgroundColor: kcWhite,
-      floatingActionButton:   Padding(
-        padding: EdgeInsets.only(left: 30, ),
+      floatingActionButton: Padding(
+        padding: EdgeInsets.only(
+          left: 30,
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -34,11 +36,14 @@ class FeaturedEventView extends StackedView<FeaturedEventViewModel> {
               ),
               child: Center(
                 child: Padding(
-                  padding:  EdgeInsets.symmetric(horizontal: 5),
+                  padding: EdgeInsets.symmetric(horizontal: 5),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SvgPicture.asset("assets/ticket.svg", color: kcWhite,),
+                      SvgPicture.asset(
+                        "assets/ticket.svg",
+                        color: kcWhite,
+                      ),
                       horizontalSpaceSmall,
                       Text("Get Ticket",
                           style: TextStyle(
@@ -60,9 +65,9 @@ class FeaturedEventView extends StackedView<FeaturedEventViewModel> {
                 ),
                 borderRadius: BorderRadius.circular(20),
               ),
-              child:  Center(
+              child: Center(
                 child: Padding(
-                  padding:  EdgeInsets.symmetric(horizontal: 5),
+                  padding: EdgeInsets.symmetric(horizontal: 5),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -79,7 +84,7 @@ class FeaturedEventView extends StackedView<FeaturedEventViewModel> {
               ),
             ),
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 showEventOptions(context);
               },
               child: Container(
@@ -101,7 +106,7 @@ class FeaturedEventView extends StackedView<FeaturedEventViewModel> {
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border:
-                          Border.all(color: kcPrimaryColor, width: 1.5)),
+                              Border.all(color: kcPrimaryColor, width: 1.5)),
                     ),
                     SizedBox(width: 2),
                     Container(
@@ -110,7 +115,7 @@ class FeaturedEventView extends StackedView<FeaturedEventViewModel> {
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border:
-                          Border.all(color: kcPrimaryColor, width: 1.5)),
+                              Border.all(color: kcPrimaryColor, width: 1.5)),
                     ),
                     SizedBox(width: 2),
                     Container(
@@ -119,7 +124,7 @@ class FeaturedEventView extends StackedView<FeaturedEventViewModel> {
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border:
-                          Border.all(color: kcPrimaryColor, width: 1.5)),
+                              Border.all(color: kcPrimaryColor, width: 1.5)),
                     ),
                   ],
                 ),
@@ -210,7 +215,7 @@ class FeaturedEventView extends StackedView<FeaturedEventViewModel> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     viewModel.navigationService.navigateToView(TicketPage());
                   },
                   child: Container(
@@ -222,11 +227,14 @@ class FeaturedEventView extends StackedView<FeaturedEventViewModel> {
                     ),
                     child: Center(
                       child: Padding(
-                        padding:  EdgeInsets.symmetric(horizontal: 5),
+                        padding: EdgeInsets.symmetric(horizontal: 5),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SvgPicture.asset("assets/ticket.svg", color: kcWhite,),
+                            SvgPicture.asset(
+                              "assets/ticket.svg",
+                              color: kcWhite,
+                            ),
                             horizontalSpaceSmall,
                             Text("Get Ticket",
                                 style: TextStyle(
@@ -249,9 +257,9 @@ class FeaturedEventView extends StackedView<FeaturedEventViewModel> {
                     ),
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child:  Center(
+                  child: Center(
                     child: Padding(
-                      padding:  EdgeInsets.symmetric(horizontal: 5),
+                      padding: EdgeInsets.symmetric(horizontal: 5),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -268,7 +276,7 @@ class FeaturedEventView extends StackedView<FeaturedEventViewModel> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     showEventOptions(context);
                   },
                   child: Container(
@@ -288,8 +296,8 @@ class FeaturedEventView extends StackedView<FeaturedEventViewModel> {
                           width: 8,
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              border:
-                              Border.all(color: kcPrimaryColor, width: 1.5)),
+                              border: Border.all(
+                                  color: kcPrimaryColor, width: 1.5)),
                         ),
                         SizedBox(width: 2),
                         Container(
@@ -297,8 +305,8 @@ class FeaturedEventView extends StackedView<FeaturedEventViewModel> {
                           width: 8,
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              border:
-                              Border.all(color: kcPrimaryColor, width: 1.5)),
+                              border: Border.all(
+                                  color: kcPrimaryColor, width: 1.5)),
                         ),
                         SizedBox(width: 2),
                         Container(
@@ -306,8 +314,8 @@ class FeaturedEventView extends StackedView<FeaturedEventViewModel> {
                           width: 8,
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              border:
-                              Border.all(color: kcPrimaryColor, width: 1.5)),
+                              border: Border.all(
+                                  color: kcPrimaryColor, width: 1.5)),
                         ),
                       ],
                     ),
@@ -557,7 +565,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                 children: [
                   Text("Suggested events",
                       style:
-                      TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   Text("See more",
                       style: TextStyle(fontSize: 14, color: kcPrimaryColor)),
                 ],
@@ -568,9 +576,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
               padding: EdgeInsets.only(left: 20, right: 20),
               child: GridView.builder(
                 shrinkWrap:
-                true, // Makes GridView take only the necessary space
+                    true, // Makes GridView take only the necessary space
                 physics:
-                const NeverScrollableScrollPhysics(), // Prevents GridView from being scrollable
+                    const NeverScrollableScrollPhysics(), // Prevents GridView from being scrollable
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   mainAxisSpacing: 8.0,
@@ -580,8 +588,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                 itemCount: 2, // Adjust the item count as needed
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
-                    height:
-                    MediaQuery.of(context).size.height * 0.3,
+                    height: MediaQuery.of(context).size.height * 0.3,
                     width: (MediaQuery.of(context).size.width - 24) /
                         2, // Width for 2 items per row with spacing
                     decoration: BoxDecoration(
@@ -594,8 +601,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                           borderRadius: BorderRadius.circular(15),
                           child: Image.asset(
                             "assets/carnival.png",
-                            height:
-                            MediaQuery.of(context).size.height * 0.13,
+                            height: MediaQuery.of(context).size.height * 0.13,
                             width: double.infinity,
                             fit: BoxFit.cover,
                           ),
@@ -619,8 +625,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                         ),
                         SizedBox(height: 2),
                         Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 8.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Row(
                             children: [
                               SvgPicture.asset("assets/calendar.svg"),
@@ -666,8 +671,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                         ),
                         const SizedBox(height: 4),
                         Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 8.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Row(
                             children: [
                               SvgPicture.asset("assets/ticket.svg"),
@@ -696,7 +700,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
         ),
       ),
     );
-
   }
 
   void showEventOptions(BuildContext context) {
@@ -707,20 +710,21 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
       ),
       builder: (context) {
         return Padding(
-          padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0, top: 8.0),
+          padding: const EdgeInsets.only(
+              left: 16.0, right: 16.0, bottom: 16.0, top: 8.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Container(),
                   Container(
                     height: 7,
                     width: MediaQuery.of(context).size.width * 0.12,
-                    decoration:  BoxDecoration(
-                      borderRadius: BorderRadius.circular(10) ,
-                      color: kcLightGrey
-                    ),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: kcLightGrey),
                   )
                 ],
               ),
@@ -756,7 +760,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     );
   }
 
-  Widget buildOption(BuildContext context, {required IconData icon, required String label}) {
+  Widget buildOption(BuildContext context,
+      {required IconData icon, required String label}) {
     return ListTile(
       leading: Icon(icon, color: Colors.black),
       title: Text(label, style: const TextStyle(fontSize: 16)),
@@ -767,8 +772,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     );
   }
 
-
-@override
+  @override
   FeaturedEventViewModel viewModelBuilder(
     BuildContext context,
   ) =>

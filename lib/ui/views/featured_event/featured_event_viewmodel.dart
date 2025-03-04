@@ -10,6 +10,7 @@ class FeaturedEventViewModel extends BaseViewModel {
   goToViewTicketView() {
     navigationService.navigateToViewTicketView();
   }
+
   void goBack() {
     navigationService.back();
   }

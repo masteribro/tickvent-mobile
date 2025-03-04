@@ -145,8 +145,9 @@ class ExploreView extends StackedView<ExploreViewModel> {
                       itemCount: 5,
                       itemBuilder: (context, index) {
                         return GestureDetector(
-                          onTap: (){
-                            viewModel.navigationService.navigateToFeaturedEventView();
+                          onTap: () {
+                            viewModel.navigationService
+                                .navigateToFeaturedEventView();
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -164,7 +165,9 @@ class ExploreView extends StackedView<ExploreViewModel> {
                                         15), // Rounded on all corners
                                     child: Image.asset(
                                       "assets/carnival.png",
-                                      height: MediaQuery.of(context).size.height *
+                                      height: MediaQuery.of(context)
+                                              .size
+                                              .height *
                                           0.26, // Half of the container's height
                                       width: double.infinity,
                                       fit: BoxFit.cover,
@@ -187,8 +190,8 @@ class ExploreView extends StackedView<ExploreViewModel> {
                                           height: 35,
                                           width: 100,
                                           decoration: BoxDecoration(
-                                              color:
-                                                  kcPrimaryColor.withOpacity(0.2),
+                                              color: kcPrimaryColor
+                                                  .withOpacity(0.2),
                                               borderRadius:
                                                   BorderRadius.circular(15)),
                                           child: Center(

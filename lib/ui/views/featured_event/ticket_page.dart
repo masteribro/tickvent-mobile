@@ -31,7 +31,8 @@ class _TicketPageState extends State<TicketPage> {
               description: 'Per seat',
               quantity: regularQuantity,
               onIncrement: () => setState(() => regularQuantity++),
-              onDecrement: () => setState(() => regularQuantity = regularQuantity > 0 ? regularQuantity - 1 : 0),
+              onDecrement: () => setState(() => regularQuantity =
+                  regularQuantity > 0 ? regularQuantity - 1 : 0),
               color: Colors.blue,
             ),
             const SizedBox(height: 16),
@@ -41,7 +42,8 @@ class _TicketPageState extends State<TicketPage> {
               description: 'Table of 5',
               quantity: vipQuantity,
               onIncrement: () => setState(() => vipQuantity++),
-              onDecrement: () => setState(() => vipQuantity = vipQuantity > 0 ? vipQuantity - 1 : 0),
+              onDecrement: () => setState(
+                  () => vipQuantity = vipQuantity > 0 ? vipQuantity - 1 : 0),
               color: Colors.amber,
             ),
             const SizedBox(height: 32),
@@ -76,7 +78,7 @@ class _TicketPageState extends State<TicketPage> {
           style: TextStyle(color: Colors.grey),
         ),
         const SizedBox(height: 16),
-         Row(
+        Row(
           children: [
             Icon(Icons.location_on, size: 16),
             SizedBox(width: 4),

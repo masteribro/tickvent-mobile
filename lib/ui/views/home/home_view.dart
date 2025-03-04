@@ -4,7 +4,12 @@ import 'package:stacked/stacked.dart';
 import 'package:tickvent/app/app.router.dart';
 import 'package:tickvent/ui/common/app_colors.dart';
 import 'package:tickvent/ui/common/ui_helpers.dart';
+import 'package:tickvent/ui/views/host_splash_screen.dart';
 
+import '../../common/app_strings.dart';
+import '../attendee_splash_screen.dart';
+import '../landing_page/host_landing_page.dart';
+import '../landing_page/landing_page.dart';
 import 'home_viewmodel.dart';
 
 class HomeView extends StackedView<HomeViewModel> {
@@ -17,6 +22,7 @@ class HomeView extends StackedView<HomeViewModel> {
     Widget? child,
   ) {
     return Scaffold(
+      backgroundColor: kcWhite,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),
@@ -45,22 +51,36 @@ class HomeView extends StackedView<HomeViewModel> {
                     ),
                     Row(
                       children: [
-                        verticalSpaceSmall,
                         Text("Switch to host",
                             style: TextStyle(fontSize: 12, color: kcLightGrey)),
                         Transform.scale(
                           scale: 0.7,
                           child: Switch(
-                            value: viewModel.isSwitched,
+                            value: isSwitched,
                             onChanged: (value) {
-                              viewModel.isSwitched = value;
+                              isSwitched = value;
+                              if (value) {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => HostSplashScreen(),
+                                  ),
+                                );
+                              } else {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          AttendeeSplashScreen()),
+                                );
+                              }
                               viewModel.notifyListeners();
                             },
                           ),
                         ),
                         SvgPicture.asset("assets/bell.svg"),
                       ],
-                    ),
+                    )
                   ],
                 ),
                 verticalSpaceMedium,
