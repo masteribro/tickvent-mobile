@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pinput/pinput.dart';
 import 'package:stacked/stacked.dart';
@@ -20,6 +21,7 @@ class SignInView extends StackedView<SignInViewModel> {
     Widget? child,
   ) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: SingleChildScrollView(
@@ -56,18 +58,20 @@ class SignInView extends StackedView<SignInViewModel> {
                                 style: TextStyle(color: Colors.grey),
                               )),
                           verticalSpaceSmall,
-                          TextFieldWidget(
-                            controller: TextEditingController(),
-                            hintText: "Enter your email address",
-                            textInputType: TextInputType.emailAddress,
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 8.w),
+                            child: TextFieldWidget(
+                              controller: viewModel.emailController,
+                              hintText: "Enter your email address",
+                              textInputType: TextInputType.emailAddress,
+                            ),
                           ),
                           verticalSpaceMedium,
                           SubmitButton(
                             label: "Continue",
                             onTap: () {
-                              viewModel.pageController.nextPage(
-                                  duration: Duration(seconds: 1),
-                                  curve: Curves.easeIn);
+                              viewModel.createAccount(
+                                  viewModel.emailController.text);
                             },
                           )
                         ],

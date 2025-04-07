@@ -15,11 +15,11 @@ class CreateEventView extends StackedView<CreateEventViewModel> {
     CreateEventViewModel viewModel,
     Widget? child,
   ) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: kcWhite,
       body: SafeArea(
         child: Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 15.w, vertical: 15.h),
+          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 15.h),
           child: Column(
             children: [
               Row(
@@ -28,7 +28,6 @@ class CreateEventView extends StackedView<CreateEventViewModel> {
                   SvgPicture.asset("assets/bell.svg"),
                 ],
               ),
-        
             ],
           ),
         ),

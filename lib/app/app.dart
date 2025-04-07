@@ -13,6 +13,10 @@ import 'package:tickvent/ui/views/host_event/host_event_view.dart';
 import 'package:tickvent/ui/views/featured_event/featured_event_view.dart';
 import 'package:tickvent/ui/views/manage_event/manage_event_view.dart';
 import 'package:tickvent/ui/views/create_event/create_event_view.dart';
+
+import '../network/api_service.dart';
+import '../services/auth_service.dart';
+import '../services/flush_bar_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -34,6 +38,9 @@ import 'package:tickvent/ui/views/create_event/create_event_view.dart';
     LazySingleton(classType: BottomSheetService),
     LazySingleton(classType: DialogService),
     LazySingleton(classType: NavigationService),
+    LazySingleton(classType: AuthService),
+    LazySingleton(classType: ApiService),
+    LazySingleton(classType: FlushBarService),
     // @stacked-service
   ],
   bottomsheets: [
@@ -44,5 +51,6 @@ import 'package:tickvent/ui/views/create_event/create_event_view.dart';
     StackedDialog(classType: InfoAlertDialog),
     // @stacked-dialog
   ],
+  logger: StackedLogger(),
 )
 class App {}

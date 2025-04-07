@@ -70,9 +70,9 @@ class HostEventView extends StackedView<HostEventViewModel> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         GestureDetector(
-                          onTap: (){
-                            viewModel.navigationService.navigateToCreateEventView();
-
+                          onTap: () {
+                            viewModel.navigationService
+                                .navigateToCreateEventView();
                           },
                           child: Container(
                             height: 35,
@@ -99,9 +99,8 @@ class HostEventView extends StackedView<HostEventViewModel> {
             ),
             verticalSpaceMedium,
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 viewModel.navigationService.navigateToCreateEventView();
-
               },
               child: Container(
                 height: MediaQuery.of(context).size.height * 0.23,
