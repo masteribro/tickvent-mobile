@@ -4,6 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pinput/pinput.dart';
 import 'package:stacked/stacked.dart';
 import 'package:tickvent/app/app.router.dart';
+import 'package:tickvent/ui/common/app_colors.dart';
+import 'package:tickvent/ui/common/sizer.dart';
 import 'package:tickvent/ui/views/landing_page/landing_page.dart';
 
 import '../../common/ui_helpers.dart';
@@ -29,22 +31,21 @@ class SignInView extends StackedView<SignInViewModel> {
             children: [
               verticalSpaceMedium,
               SvgPicture.asset("assets/loginLogo.svg"),
-              const Row(
-                children: [
-                  Text(
-                    "Log In or Sign Up",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
+
               Container(
                 height: MediaQuery.of(context).size.height * 0.4,
                 child: PageView(
                   controller: viewModel.pageController,
+                  physics: const NeverScrollableScrollPhysics(),
                   children: [
                     Container(
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Text(
+                            "Sign Up",
+                            style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
+                          ),
                           verticalSpaceSmall,
                           const Text(
                             "Enter your email address and we will send you a verification code",
@@ -73,6 +74,25 @@ class SignInView extends StackedView<SignInViewModel> {
                               viewModel.createAccount(
                                   viewModel.emailController.text);
                             },
+                          ),
+                          5.height,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                "Do you have an account?",
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                              InkWell(
+                                onTap: (){
+                                  viewModel.pageController.jumpToPage(2);
+                                },
+                                child: const Text(
+                                  " Login",
+                                  style: TextStyle(color: kcPrimaryColor),
+                                ),
+                              )
+                            ],
                           )
                         ],
                       ),
@@ -81,6 +101,10 @@ class SignInView extends StackedView<SignInViewModel> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Text(
+                            "Sign Up",
+                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
                           verticalSpaceSmall,
                           const Row(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -100,9 +124,48 @@ class SignInView extends StackedView<SignInViewModel> {
                           SubmitButton(
                               label: "Continue",
                               onTap: () {
-                                viewModel.navigationService
-                                    .navigateToView(LandingPageManager());
+                                viewModel.sendOtp(viewModel.emailController.text, int.parse(viewModel.pinController.text));
+
                               }),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Log In",
+                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          verticalSpaceSmall,
+                          const Text(
+                            "Enter your email address and we will send you a verification code",
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                          verticalSpaceMedium,
+                          const Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                "Your email address",
+                                style: TextStyle(color: Colors.grey),
+                              )),
+                          verticalSpaceSmall,
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 8.w),
+                            child: TextFieldWidget(
+                              controller: viewModel.emailController,
+                              hintText: "Enter your email address",
+                              textInputType: TextInputType.emailAddress,
+                            ),
+                          ),
+                          verticalSpaceMedium,
+                          SubmitButton(
+                            label: "Continue",
+                            onTap: () {
+                              viewModel.sendOtp(viewModel.emailController.text, int.parse(viewModel.pinController.text));
+                            },
+                          )
                         ],
                       ),
                     ),

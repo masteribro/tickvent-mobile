@@ -30,4 +30,28 @@ class SignInViewModel extends BaseViewModel {
       },
     );
   }
+  void sendOtp(String email, int otp) async {
+    final result = await _authService.sendOtp(email, otp);
+    result.when(
+      ifLeft: (value) {
+        locator<FlushBarService>()
+            .showFlushBar(variant: FlushBarType.failure, message: value.value);
+      },
+      ifRight: (value) async {
+       navigationService.navigateToView(const LandingPageManager());
+      },
+    );
+  }
+  void Login(String email, int otp) async {
+    final result = await _authService.sendOtp(email, otp);
+    result.when(
+      ifLeft: (value) {
+        locator<FlushBarService>()
+            .showFlushBar(variant: FlushBarType.failure, message: value.value);
+      },
+      ifRight: (value) async {
+        navigationService.navigateToView(const LandingPageManager());
+      },
+    );
+  }
 }

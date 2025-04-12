@@ -1,3 +1,4 @@
+import '../models/change_passcode_request.dart';
 import 'api_repo_interface.dart';
 import 'api_response.dart';
 
@@ -7,8 +8,26 @@ class ApiRepositoryMock extends IApiRepository {
     // TODO: implement getDataFromAccountNumber
     throw UnimplementedError();
   }
+
+  @override
+  Future<ApiResponse> sendOtp(String email, int otp) {
+    // TODO: implement sendOtp
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResponse> login(String email, int otp) {
+    // TODO: implement login
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResponse> createPin(UpdatePasscodeRequest request) {
+    // TODO: implement createPin
+    throw UnimplementedError();
+  }
   // @override
-  // Future<ApiResponse> createPassword(CreatePasswordRequestModel model,
+  // Future<ApiResponse> createPassword(CreatePasswordRequestModel models,
   //     {int? userId}) async {
   //   await Future.delayed(const Duration(seconds: 2));
   //
@@ -88,7 +107,7 @@ class ApiRepositoryMock extends IApiRepository {
   // }
   //
   // @override
-  // Future<ApiResponse> login(LoginPayloadRequestModel model) async {
+  // Future<ApiResponse> login(LoginPayloadRequestModel models) async {
   //   await Future.delayed(const Duration(seconds: 2));
   //
   //   return ApiResponse(
@@ -190,7 +209,7 @@ class ApiRepositoryMock extends IApiRepository {
   // }
   //
   // @override
-  // Future<ApiResponse> updateAvatar(UpdateAvatarRequestModel model) async {
+  // Future<ApiResponse> updateAvatar(UpdateAvatarRequestModel models) async {
   //   await Future.delayed(const Duration(seconds: 2));
   //   Response response = Response(
   //     statusCode: 200,
@@ -208,7 +227,7 @@ class ApiRepositoryMock extends IApiRepository {
   // }
   //
   // @override
-  // Future<ApiResponse> checkBalance(BalanceRequestModel model) async {
+  // Future<ApiResponse> checkBalance(BalanceRequestModel models) async {
   //   await Future.delayed(const Duration(seconds: 2));
   //   Response response = Response(
   //     statusCode: 200,
@@ -227,7 +246,7 @@ class ApiRepositoryMock extends IApiRepository {
   //
   // @override
   // Future<ApiResponse> getTransactionHistoryRange(
-  //     TransactionPayloadResponseModel model) async {
+  //     TransactionPayloadResponseModel models) async {
   //   await Future.delayed(const Duration(seconds: 2));
   //   Response response = Response(
   //     statusCode: 200,
@@ -245,7 +264,7 @@ class ApiRepositoryMock extends IApiRepository {
   // }
   //
   // // @override
-  // // Future<ApiResponse> transfer(TransferRequestModel model) async {
+  // // Future<ApiResponse> transfer(TransferRequestModel models) async {
   // //   await Future.delayed(const Duration(seconds: 2));
   // //   Response response = Response(
   // //     statusCode: 200,
@@ -263,7 +282,7 @@ class ApiRepositoryMock extends IApiRepository {
   // // }
   //
   // @override
-  // Future<ApiResponse> changePassword(ChangePasswordRequestModel model) async {
+  // Future<ApiResponse> changePassword(ChangePasswordRequestModel models) async {
   //   await Future.delayed(const Duration(seconds: 2));
   //   Response response = Response(
   //     statusCode: 200,
@@ -307,7 +326,7 @@ class ApiRepositoryMock extends IApiRepository {
   // }
   //
   // @override
-  // Future<ApiResponse> changePin(ChangePinRequestModel model) async {
+  // Future<ApiResponse> changePin(ChangePinRequestModel models) async {
   //   await Future.delayed(const Duration(seconds: 2));
   //   Response response = Response(
   //     statusCode: 200,
@@ -325,7 +344,7 @@ class ApiRepositoryMock extends IApiRepository {
   // }
   //
   // @override
-  // Future<ApiResponse> createPin(CreatePinRequestModel model) async {
+  // Future<ApiResponse> createPin(CreatePinRequestModel models) async {
   //   await Future.delayed(const Duration(seconds: 2));
   //   Response response = Response(
   //     statusCode: 200,
@@ -343,7 +362,7 @@ class ApiRepositoryMock extends IApiRepository {
   // }
   //
   // @override
-  // Future<ApiResponse> verifyPaymentPin(VerifyPaymentRequestModel model) async {
+  // Future<ApiResponse> verifyPaymentPin(VerifyPaymentRequestModel models) async {
   //   await Future.delayed(const Duration(seconds: 2));
   //   Response response = Response(
   //     statusCode: 200,
@@ -419,7 +438,7 @@ class ApiRepositoryMock extends IApiRepository {
   // }
   //
   // @override
-  // Future<ApiResponse> fetchCustomerData(ResolveAcctRequestModel model) {
+  // Future<ApiResponse> fetchCustomerData(ResolveAcctRequestModel models) {
   //   // TODO: implement fetchCustomerData
   //   throw UnimplementedError();
   // }
@@ -462,7 +481,7 @@ class ApiRepositoryMock extends IApiRepository {
   // }
   //
   // // @override
-  // // Future<ApiResponse> interTransfer(InterTransferRequestModel model) {
+  // // Future<ApiResponse> interTransfer(InterTransferRequestModel models) {
   // //
   // //   throw UnimplementedError();
   // // }
@@ -499,7 +518,7 @@ class ApiRepositoryMock extends IApiRepository {
   // }
   //
   // @override
-  // Future<ApiResponse> transferV2(TransferV2RequestModel model) {
+  // Future<ApiResponse> transferV2(TransferV2RequestModel models) {
   //   // TODO: implement transferV2
   //   throw UnimplementedError();
   // }
@@ -511,7 +530,7 @@ class ApiRepositoryMock extends IApiRepository {
   // }
   //
   // @override
-  // Future<ApiResponse> addBeneficiaries(BeneficiariesRequestModel model) {
+  // Future<ApiResponse> addBeneficiaries(BeneficiariesRequestModel models) {
   //   // TODO: implement addBeneficiaries
   //   throw UnimplementedError();
   // }

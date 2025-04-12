@@ -1,14 +1,16 @@
+import '../models/change_passcode_request.dart';
 import 'api_response.dart';
 
 abstract class IApiRepository {
-  /// OnBoarding Repository
+  /// AuthService Repository
   Future<ApiResponse> createAccount(String email);
 
-  // Future<ApiResponse> createPassword(CreatePasswordRequestModel model,
-  //     {int? userId});
-  //
-  // Future<ApiResponse> getOTP(OTPType type, int? userId);
-  //
+  Future<ApiResponse> sendOtp(String email, int otp);
+
+  Future<ApiResponse> login(String email, int otp);
+
+  Future<ApiResponse> createPin(UpdatePasscodeRequest request);
+
   // Future<ApiResponse> verifyOTP(String otp, OTPType type, {int? userId});
   //
   // Future<ApiResponse> supportMessage(
@@ -20,21 +22,21 @@ abstract class IApiRepository {
   //
   // Future<ApiResponse> getDocument();
   //
-  // Future<ApiResponse> login(LoginPayloadRequestModel model);
+  // Future<ApiResponse> login(LoginPayloadRequestModel models);
   //
   // Future<ApiResponse> forgotPassword(String phoneNumber);
   //
-  // Future<ApiResponse> updateAvatar(UpdateAvatarRequestModel model);
+  // Future<ApiResponse> updateAvatar(UpdateAvatarRequestModel models);
   //
-  // Future<ApiResponse> changePassword(ChangePasswordRequestModel model);
+  // Future<ApiResponse> changePassword(ChangePasswordRequestModel models);
   //
-  // Future<ApiResponse> changePin(ChangePinRequestModel model);
+  // Future<ApiResponse> changePin(ChangePinRequestModel models);
   //
-  // Future<ApiResponse> createPin(CreatePinRequestModel model);
+  // Future<ApiResponse> createPin(CreatePinRequestModel models);
   //
   // Future<ApiResponse> versioning();
   //
-  // Future<ApiResponse> fetchCustomerData(ResolveAcctRequestModel model);
+  // Future<ApiResponse> fetchCustomerData(ResolveAcctRequestModel models);
   //
   // Future<ApiResponse> getUserDetails(int userId);
   //
@@ -47,19 +49,19 @@ abstract class IApiRepository {
   // // Future<ApiResponse> otpPassword(String otpNumber);
   //
   // /// Transactions Repository
-  // Future<ApiResponse> checkBalance(BalanceRequestModel model);
+  // Future<ApiResponse> checkBalance(BalanceRequestModel models);
   //
   // Future<ApiResponse> getTransactionHistoryRange(
-  //     TransactionPayloadResponseModel model);
+  //     TransactionPayloadResponseModel models);
   //
   // /// These methods has been deprecated. Use [transferV2]
-  // // Future<ApiResponse> transfer(TransferRequestModel model);
+  // // Future<ApiResponse> transfer(TransferRequestModel models);
   // //
-  // // Future<ApiResponse> interTransfer(InterTransferRequestModel model);
+  // // Future<ApiResponse> interTransfer(InterTransferRequestModel models);
   //
-  // Future<ApiResponse> transferV2(TransferV2RequestModel model);
+  // Future<ApiResponse> transferV2(TransferV2RequestModel models);
   //
-  // Future<ApiResponse> verifyPaymentPin(VerifyPaymentRequestModel model);
+  // Future<ApiResponse> verifyPaymentPin(VerifyPaymentRequestModel models);
   //
   // Future<ApiResponse> billingCategories();
   //
@@ -67,7 +69,7 @@ abstract class IApiRepository {
   //
   // Future<ApiResponse> getBeneficiaries(String accountId);
   //
-  // Future<ApiResponse> addBeneficiaries(BeneficiariesRequestModel model);
+  // Future<ApiResponse> addBeneficiaries(BeneficiariesRequestModel models);
   //
   // Future<ApiResponse> deleteBeneficiaries(index);
   //

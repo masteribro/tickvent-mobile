@@ -51,7 +51,7 @@ class HomeView extends StackedView<HomeViewModel> {
                     ),
                     Row(
                       children: [
-                        Text("Switch to host",
+                        const Text("Switch to host",
                             style: TextStyle(fontSize: 12, color: kcLightGrey)),
                         Transform.scale(
                           scale: 0.7,
@@ -121,7 +121,7 @@ class HomeView extends StackedView<HomeViewModel> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Featured events",
+                    const Text("Featured events",
                         style: TextStyle(fontSize: 14, color: kcLightGrey)),
                     Container(
                       height: 40,
@@ -130,7 +130,7 @@ class HomeView extends StackedView<HomeViewModel> {
                         color: kcPrimaryColor,
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text("More Events",
                             style: TextStyle(fontSize: 12, color: kcWhite)),
                       ),
@@ -192,7 +192,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 2,
                                 ),
                                 Padding(
@@ -206,7 +206,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                               fontSize: 10,
                                               color: kcPrimaryColor,
                                               fontWeight: FontWeight.bold)),
-                                      SizedBox(width: 5),
+                                      const SizedBox(width: 5),
                                       SvgPicture.asset("assets/clock.svg"),
                                       const Text("5:00pm",
                                           style: TextStyle(
@@ -216,7 +216,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 2,
                                 ),
                                 const Padding(

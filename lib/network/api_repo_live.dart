@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import '../app/app.locator.dart';
+import '../models/change_passcode_request.dart';
 import '../services/user_service.dart';
 import 'api_repo_interface.dart';
 import 'api_response.dart';
@@ -7,13 +8,13 @@ import 'api_service.dart';
 
 class ApiRepositoryLive extends IApiRepository {
   @override
-  // Future<ApiResponse> createPassword(CreatePasswordRequestModel model,
+  // Future<ApiResponse> createPassword(CreatePasswordRequestModel models,
   //     {int? userId}) async {
   //   ApiResponse response = await locator<ApiService>().call(
   //     method: HttpMethod.put,
   //     endpoint:
   //         "onboard/customer/${locator<UserService>().currentUser.data?.customer?.id ?? userId}/password/create",
-  //     reqBody: model.toJson(),
+  //     reqBody: models.toJson(),
   //   );
   //   return response;
   // }
@@ -27,26 +28,35 @@ class ApiRepositoryLive extends IApiRepository {
     return response;
   }
 
-  // @override
-  // Future<ApiResponse> getOTP(OTPType type, int? userId) async {
-  //   debugPrint(userId.toString());
-  //   ApiResponse response = await locator<ApiService>().call(
-  //     method: HttpMethod.get,
-  //     endpoint:
-  //         "${type.urlPrefix}/${locator<UserService>().userId ?? userId}/otp/${type.urlSuffix}",
-  //   );
-  //   return response;
-  // }
-  //
-  // @override
-  // Future<ApiResponse> login(LoginPayloadRequestModel model) async {
-  //   ApiResponse response = await locator<ApiService>().call(
-  //     method: HttpMethod.post,
-  //     endpoint: "auth/customer/login",
-  //     reqBody: model.toJson(),
-  //   );
-  //   return response;
-  // }
+  @override
+  Future<ApiResponse> sendOtp(String email, int otp) async {
+    ApiResponse response = await locator<ApiService>().call(
+      method: HttpMethod.post,
+      endpoint: "/register-verification",
+      reqBody: {"email": email, "otp": otp ,}
+    );
+    return response;
+  }
+
+  @override
+  Future<ApiResponse> login(String email, int otp) async {
+    ApiResponse response = await locator<ApiService>().call(
+      method: HttpMethod.post,
+      endpoint: "/login",
+      reqBody: {"email": email, "otp": otp ,},
+    );
+    return response;
+  }
+
+  @override
+  Future<ApiResponse> createPin(UpdatePasscodeRequest request) async {
+    ApiResponse response = await locator<ApiService>().call(
+      method: HttpMethod.post,
+      endpoint: "/change-password",
+      reqBody: request.toJson(),
+    );
+    return response;
+  }
   //
   // @override
   // Future<ApiResponse> verifyOTP(String otp, OTPType type, {int? userId}) async {
@@ -68,66 +78,66 @@ class ApiRepositoryLive extends IApiRepository {
   // }
   //
   // @override
-  // Future<ApiResponse> updateAvatar(UpdateAvatarRequestModel model) async {
+  // Future<ApiResponse> updateAvatar(UpdateAvatarRequestModel models) async {
   //   ApiResponse response = await locator<ApiService>().call(
   //     method: HttpMethod.post,
   //     endpoint: "settings/customer/avartar/update",
-  //     formData: FormData.fromMap(model.toJson()),
+  //     formData: FormData.fromMap(models.toJson()),
   //     useFormData: true,
   //   );
   //   return response;
   // }
   //
   // @override
-  // Future<ApiResponse> checkBalance(BalanceRequestModel model) async {
+  // Future<ApiResponse> checkBalance(BalanceRequestModel models) async {
   //   ApiResponse response = await locator<ApiService>().call(
   //     method: HttpMethod.post,
   //     endpoint: 'transactions/customer/check-balance',
-  //     reqBody: model.toJson(),
+  //     reqBody: models.toJson(),
   //   );
   //   return response;
   // }
   //
   // @override
   // Future<ApiResponse> getTransactionHistoryRange(
-  //     TransactionPayloadResponseModel model) async {
+  //     TransactionPayloadResponseModel models) async {
   //   ApiResponse response = await locator<ApiService>().call(
   //     method: HttpMethod.post,
   //     endpoint: "transactions/customer/history",
-  //     reqBody: model.toJson(),
+  //     reqBody: models.toJson(),
   //   );
   //   return response;
   // }
   //
   // /// This method has been deprecated. Use [transferV2]
   // // @override
-  // // Future<ApiResponse> transfer(TransferRequestModel model) async {
+  // // Future<ApiResponse> transfer(TransferRequestModel models) async {
   // //   ApiResponse response = await locator<ApiService>().call(
   // //     method: HttpMethod.post,
   // //     endpoint: "transactions/customer/transfer",
-  // //     reqBody: model.toJson(),
+  // //     reqBody: models.toJson(),
   // //   );
   // //   return response;
   // // }
   //
   // @override
-  // Future<ApiResponse> changePassword(ChangePasswordRequestModel model) async {
+  // Future<ApiResponse> changePassword(ChangePasswordRequestModel models) async {
   //   ApiResponse response = await locator<ApiService>().call(
   //     method: HttpMethod.put,
   //     endpoint:
   //         "settings/customer/${locator<UserService>().userId}/password/change",
-  //     reqBody: model.toJson(),
+  //     reqBody: models.toJson(),
   //   );
   //   return response;
   // }
   //
   // @override
-  // Future<ApiResponse> changePin(ChangePinRequestModel model) async {
+  // Future<ApiResponse> changePin(ChangePinRequestModel models) async {
   //   ApiResponse response = await locator<ApiService>().call(
   //     method: HttpMethod.put,
   //     endpoint:
   //         "settings/customer/${locator<UserService>().userId}/paymentpin/change",
-  //     reqBody: model.toJson(),
+  //     reqBody: models.toJson(),
   //   );
   //   return response;
   // }
@@ -143,12 +153,12 @@ class ApiRepositoryLive extends IApiRepository {
   // }
   //
   // @override
-  // Future<ApiResponse> createPin(CreatePinRequestModel model) async {
+  // Future<ApiResponse> createPin(CreatePinRequestModel models) async {
   //   ApiResponse response = await locator<ApiService>().call(
   //     method: HttpMethod.put,
   //     endpoint:
   //         "settings/customer/${locator<UserService>().userId}/paymentpin/create",
-  //     reqBody: model.toJson(),
+  //     reqBody: models.toJson(),
   //   );
   //   return response;
   // }
@@ -182,11 +192,11 @@ class ApiRepositoryLive extends IApiRepository {
   // }
   //
   // @override
-  // Future<ApiResponse> fetchCustomerData(ResolveAcctRequestModel model) async {
+  // Future<ApiResponse> fetchCustomerData(ResolveAcctRequestModel models) async {
   //   ApiResponse response = await locator<ApiService>().call(
   //       method: HttpMethod.post,
   //       endpoint: "onboard/customer/onboarding",
-  //       reqBody: model.toJson());
+  //       reqBody: models.toJson());
   //   return response;
   // }
   //
@@ -229,11 +239,11 @@ class ApiRepositoryLive extends IApiRepository {
   // }
   //
   // @override
-  // Future<ApiResponse> addBeneficiaries(BeneficiariesRequestModel model) async {
+  // Future<ApiResponse> addBeneficiaries(BeneficiariesRequestModel models) async {
   //   ApiResponse response = await locator<ApiService>().call(
   //       method: HttpMethod.post,
   //       endpoint: "https://regent-mfb.moneta.ng/api/beneficiary/add",
-  //       reqBody: model.toJson());
+  //       reqBody: models.toJson());
   //   return response;
   // }
   //
@@ -257,11 +267,11 @@ class ApiRepositoryLive extends IApiRepository {
   // }
   //
   // @override
-  // Future<ApiResponse> verifyPaymentPin(VerifyPaymentRequestModel model) async {
+  // Future<ApiResponse> verifyPaymentPin(VerifyPaymentRequestModel models) async {
   //   ApiResponse response = await locator<ApiService>().call(
   //       method: HttpMethod.post,
   //       endpoint: "settings/customer/paymentpin/verify",
-  //       reqBody: model.toJson());
+  //       reqBody: models.toJson());
   //   return response;
   // }
   //
@@ -393,11 +403,11 @@ class ApiRepositoryLive extends IApiRepository {
   // }
   //
   // @override
-  // Future<ApiResponse> transferV2(TransferV2RequestModel model) async {
+  // Future<ApiResponse> transferV2(TransferV2RequestModel models) async {
   //   ApiResponse response = await locator<ApiService>().call(
   //       method: HttpMethod.post,
   //       endpoint: "transactions/customer/transfer",
-  //       reqBody: model.toJson());
+  //       reqBody: models.toJson());
   //   return response;
   // }
   //
