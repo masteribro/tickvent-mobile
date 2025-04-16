@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pinput/pinput.dart';
 import 'package:stacked/stacked.dart';
 import 'package:tickvent/app/app.router.dart';
+import 'package:tickvent/services/user_service.dart';
 import 'package:tickvent/ui/common/app_colors.dart';
 import 'package:tickvent/ui/common/ui_helpers.dart';
 import 'package:tickvent/ui/views/host_splash_screen.dart';
 
+import '../../../app/app.locator.dart';
+import '../../../models/create_passcode_request.dart';
 import '../../common/app_strings.dart';
+import '../../common/local_storage.dart';
+import '../../common/storage_dir.dart';
+import '../../component/submit_button.dart';
 import '../attendee_splash_screen.dart';
 import '../landing_page/host_landing_page.dart';
 import '../landing_page/landing_page.dart';
+import '../sign_in/sign_in_viewmodel.dart';
 import 'home_viewmodel.dart';
 
 class HomeView extends StackedView<HomeViewModel> {
@@ -21,6 +31,7 @@ class HomeView extends StackedView<HomeViewModel> {
     HomeViewModel viewModel,
     Widget? child,
   ) {
+    viewModel.context = context;
     return Scaffold(
       backgroundColor: kcWhite,
       body: SafeArea(
@@ -36,15 +47,21 @@ class HomeView extends StackedView<HomeViewModel> {
                       children: [
                         Image.asset("assets/profile.png"),
                         horizontalSpaceSmall,
-                        const Column(
+                        Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Hello,",
-                                style: TextStyle(
-                                    fontSize: 15, color: kcLightGrey)),
-                            Text("Olamide",
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold)),
+                            // Text("Hello,",
+                            //     style: TextStyle(
+                            //         fontSize: 15, color: kcLightGrey)),
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.35,
+                              child: Text( locator<UserService>().currentUser.data?.email ?? viewModel.email
+                                  ??
+                                      "",
+                                  overflow: TextOverflow.ellipsis,
+                                  style:  TextStyle(
+                                      fontSize: 15.sp, fontWeight: FontWeight.bold)),
+                            ),
                           ],
                         )
                       ],
@@ -273,4 +290,72 @@ class HomeView extends StackedView<HomeViewModel> {
     BuildContext context,
   ) =>
       HomeViewModel();
+
+  @override
+  Future<void> onViewModelReady(HomeViewModel viewModel) async {
+    debugPrint("does it have passcode1${viewModel.isAlreadySet}");
+    debugPrint("does it have passcode2${await locator<LocalStorage>().fetch(StorageDir.isPassCodeSet)}");
+    viewModel.email = await locator<LocalStorage>().fetch(StorageDir.userEmail);
+    viewModel.notifyListeners();
+
+    final isPassSet = await locator<LocalStorage>().fetch(StorageDir.isPassCodeSet);
+    if (!viewModel.isAlreadySet && isLogin == false) {
+      SchedulerBinding.instance.addPostFrameCallback((_) {
+        Future.delayed(const Duration(milliseconds: 300), () {
+          if (viewModel.context.mounted && ModalRoute.of(viewModel.context)?.isCurrent == true) {
+            _showInputBottomSheet(viewModel.context, viewModel);
+          }
+        });
+      });
+    }
+  }
+
+
+  void _showInputBottomSheet(context, HomeViewModel viewModel) {
+    showModalBottomSheet(
+      context: context,
+      isDismissible: false,
+      enableDrag: false,
+      isScrollControlled: true,
+      builder: (_) => Padding(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+          left: 16,
+          right: 16,
+          top: 24,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text(
+              'Set Your Passcode',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 12),
+            Pinput(
+              length: 6,
+              controller: viewModel.passCodeController,
+            ),
+            const SizedBox(height: 16),
+            SubmitButton(
+                label: "Continue",
+                isLoading: viewModel.isBusy,
+                onTap: () {
+                  if (viewModel.passCodeController.text.trim().length == 6) {
+                    viewModel.setPassCode(
+                        CreatePasscodeRequest(
+                            email:
+                            viewModel.email ?? locator<SignInViewModel>().emailController.text,
+                            isMobile: true,
+                            passcode: int.parse(viewModel.passCodeController.text),
+                            passcodeConfirmation: int.parse(viewModel.passCodeController.text)),
+                        context);
+                  }
+                }),
+            const SizedBox(height: 24),
+          ],
+        ),
+      ),
+    );
+  }
 }

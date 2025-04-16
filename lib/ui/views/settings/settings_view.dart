@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:stacked/stacked.dart';
+import 'package:tickvent/app/app.router.dart';
 
 import '../../common/ui_helpers.dart';
 import 'settings_viewmodel.dart';
@@ -438,6 +439,61 @@ class SettingsView extends StackedView<SettingsViewModel> {
                       ),
                     )
                   ],
+                ),
+                verticalSpaceSmall,
+                GestureDetector(
+                  onTap: (){
+                    viewModel.navigationService.navigateToSignInView();
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.1,
+                        width: MediaQuery.of(context).size.width * 0.92,
+                        decoration: BoxDecoration(
+                          color: Color(0xffF3F4F6),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.all(15.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Icon(Icons.logout),
+                                    horizontalSpaceSmall,
+                                    Padding(
+                                      padding: EdgeInsets.only(bottom: 20),
+                                      child: Icon(
+                                        Icons.arrow_forward_ios,
+                                        size: 14,
+                                        color: Colors.black54,
+                                      ),
+                                    ),
+                                  ]),
+
+                              Column(
+                                children: [
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text("Log out",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w500)),
+                                  ),
+
+
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 )
               ],
             ),

@@ -16,7 +16,11 @@ import 'package:tickvent/ui/views/create_event/create_event_view.dart';
 
 import '../network/api_service.dart';
 import '../services/auth_service.dart';
+import '../services/event_service.dart';
 import '../services/flush_bar_service.dart';
+import '../services/user_service.dart';
+import '../ui/common/local_storage.dart';
+import '../ui/views/sign_in/sign_in_viewmodel.dart';
 // @stacked-import
 
 @StackedApp(
@@ -39,8 +43,12 @@ import '../services/flush_bar_service.dart';
     LazySingleton(classType: DialogService),
     LazySingleton(classType: NavigationService),
     LazySingleton(classType: AuthService),
+    LazySingleton(classType: LocalStorage),
     LazySingleton(classType: ApiService),
     LazySingleton(classType: FlushBarService),
+    LazySingleton(classType: EventService),
+    LazySingleton(classType: UserService),
+    LazySingleton(classType: SignInViewModel),
     // @stacked-service
   ],
   bottomsheets: [

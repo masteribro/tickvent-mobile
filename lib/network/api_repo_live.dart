@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import '../app/app.locator.dart';
 import '../models/change_passcode_request.dart';
+import '../models/create_passcode_request.dart';
 import '../services/user_service.dart';
 import 'api_repo_interface.dart';
 import 'api_response.dart';
@@ -24,26 +25,37 @@ class ApiRepositoryLive extends IApiRepository {
     ApiResponse response = await locator<ApiService>().call(
         method: HttpMethod.post,
         endpoint: "/register",
-        reqBody: {"email": email, "is_mobile": false, "device_token": "dscsdccwdds"});
+        reqBody: {
+          "email": email,
+          "is_mobile": false,
+          "device_token": "dscsdccwdds"
+        });
     return response;
   }
 
   @override
   Future<ApiResponse> sendOtp(String email, int otp) async {
     ApiResponse response = await locator<ApiService>().call(
-      method: HttpMethod.post,
-      endpoint: "/register-verification",
-      reqBody: {"email": email, "otp": otp ,}
-    );
+        method: HttpMethod.post,
+        endpoint: "/register-verification",
+        reqBody: {
+          "email": email,
+          "otp": otp,
+        });
     return response;
   }
 
   @override
-  Future<ApiResponse> login(String email, int otp) async {
+  Future<ApiResponse> login(String email, int passCode) async {
     ApiResponse response = await locator<ApiService>().call(
       method: HttpMethod.post,
       endpoint: "/login",
-      reqBody: {"email": email, "otp": otp ,},
+      reqBody: {
+        "email": email,
+        "is_mobile": true,
+        "device_token": "jghhggftyfktuyu",
+        "passcode": passCode
+      },
     );
     return response;
   }
@@ -54,6 +66,70 @@ class ApiRepositoryLive extends IApiRepository {
       method: HttpMethod.post,
       endpoint: "/change-password",
       reqBody: request.toJson(),
+    );
+    return response;
+  }
+
+  @override
+  Future<ApiResponse> createPassCode(CreatePasscodeRequest request) async {
+    ApiResponse response = await locator<ApiService>().call(
+      method: HttpMethod.post,
+      endpoint: "/set-password",
+      reqBody: request.toJson(),
+    );
+    return response;
+  }
+
+  @override
+  Future<ApiResponse> featuredEvents() async {
+    ApiResponse response = await locator<ApiService>().call(
+      method: HttpMethod.get,
+      endpoint: "/events?filter=featured",
+    );
+    return response;
+  }
+
+  @override
+  Future<ApiResponse> upcomingEvents() async {
+    ApiResponse response = await locator<ApiService>().call(
+      method: HttpMethod.get,
+      endpoint: "/events?filter=upcoming",
+    );
+    return response;
+  }
+
+  @override
+  Future<ApiResponse> weekEndEvents() async {
+    ApiResponse response = await locator<ApiService>().call(
+      method: HttpMethod.get,
+      endpoint: "/events?filter=weekend",
+    );
+    return response;
+  }
+
+  @override
+  Future<ApiResponse> getConfectionary() async {
+    ApiResponse response = await locator<ApiService>().call(
+      method: HttpMethod.post,
+      endpoint: "/events/1/confectionary/1",
+    );
+    return response;
+  }
+
+  @override
+  Future<ApiResponse> createEvent() async {
+    ApiResponse response = await locator<ApiService>().call(
+      method: HttpMethod.post,
+      endpoint: "/events/create",
+    );
+    return response;
+  }
+
+  @override
+  Future<ApiResponse> addFeedBack(String message, int eventId) async {
+    ApiResponse response = await locator<ApiService>().call(
+      method: HttpMethod.post,
+      endpoint: "/events/feedback",
     );
     return response;
   }

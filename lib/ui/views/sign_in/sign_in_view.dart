@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pinput/pinput.dart';
@@ -31,7 +32,6 @@ class SignInView extends StackedView<SignInViewModel> {
             children: [
               verticalSpaceMedium,
               SvgPicture.asset("assets/loginLogo.svg"),
-
               Container(
                 height: MediaQuery.of(context).size.height * 0.4,
                 child: PageView(
@@ -44,7 +44,8 @@ class SignInView extends StackedView<SignInViewModel> {
                         children: [
                           Text(
                             "Sign Up",
-                            style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontSize: 20.sp, fontWeight: FontWeight.bold),
                           ),
                           verticalSpaceSmall,
                           const Text(
@@ -70,6 +71,7 @@ class SignInView extends StackedView<SignInViewModel> {
                           verticalSpaceMedium,
                           SubmitButton(
                             label: "Continue",
+                            isLoading: viewModel.isBusy,
                             onTap: () {
                               viewModel.createAccount(
                                   viewModel.emailController.text);
@@ -84,7 +86,7 @@ class SignInView extends StackedView<SignInViewModel> {
                                 style: TextStyle(color: Colors.grey),
                               ),
                               InkWell(
-                                onTap: (){
+                                onTap: () {
                                   viewModel.pageController.jumpToPage(2);
                                 },
                                 child: const Text(
@@ -101,9 +103,10 @@ class SignInView extends StackedView<SignInViewModel> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             "Sign Up",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           verticalSpaceSmall,
                           const Row(
@@ -123,9 +126,11 @@ class SignInView extends StackedView<SignInViewModel> {
                           verticalSpaceMedium,
                           SubmitButton(
                               label: "Continue",
+                              isLoading: viewModel.isBusy,
                               onTap: () {
-                                viewModel.sendOtp(viewModel.emailController.text, int.parse(viewModel.pinController.text));
-
+                                viewModel.sendOtp(
+                                    viewModel.emailController.text,
+                                    int.parse(viewModel.pinController.text));
                               }),
                         ],
                       ),
@@ -134,9 +139,10 @@ class SignInView extends StackedView<SignInViewModel> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             "Log In",
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           verticalSpaceSmall,
                           const Text(
@@ -163,9 +169,48 @@ class SignInView extends StackedView<SignInViewModel> {
                           SubmitButton(
                             label: "Continue",
                             onTap: () {
-                              viewModel.sendOtp(viewModel.emailController.text, int.parse(viewModel.pinController.text));
+                              viewModel.pageController.nextPage(
+                                  duration: const Duration(seconds: 1),
+                                  curve: Curves.easeIn);
                             },
                           )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Login with your passcode",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          verticalSpaceSmall,
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Enter your passcode",
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                            ],
+                          ),
+                          verticalSpaceMedium,
+                          Pinput(
+                            length: 6,
+                            controller: viewModel.passCodeController,
+                          ),
+                          verticalSpaceMedium,
+                          SubmitButton(
+                              label: "Continue",
+                              isLoading: viewModel.isBusy,
+                              onTap: () {
+                                viewModel.login(
+                                    viewModel.emailController.text,
+                                    int.parse(
+                                        viewModel.passCodeController.text));
+                              }),
                         ],
                       ),
                     ),

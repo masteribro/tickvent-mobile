@@ -1,3 +1,5 @@
+import 'package:tickvent/models/create_passcode_request.dart';
+
 import '../models/change_passcode_request.dart';
 import 'api_repo_interface.dart';
 import 'api_response.dart';
@@ -24,6 +26,48 @@ class ApiRepositoryMock extends IApiRepository {
   @override
   Future<ApiResponse> createPin(UpdatePasscodeRequest request) {
     // TODO: implement createPin
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResponse> featuredEvents() {
+    // TODO: implement featuredEvents
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResponse> upcomingEvents() {
+    // TODO: implement upcomingEvents
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResponse> weekEndEvents() {
+    // TODO: implement weekEndEvents
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResponse> getConfectionary() {
+    // TODO: implement getConfectionary
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResponse> createEvent() {
+    // TODO: implement createEvent
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResponse> addFeedBack(String message, int eventId) {
+    // TODO: implement addFeedBack
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResponse> createPassCode(CreatePasscodeRequest request) {
+    // TODO: implement createPassCode
     throw UnimplementedError();
   }
   // @override

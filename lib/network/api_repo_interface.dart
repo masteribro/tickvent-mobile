@@ -1,4 +1,5 @@
 import '../models/change_passcode_request.dart';
+import '../models/create_passcode_request.dart';
 import 'api_response.dart';
 
 abstract class IApiRepository {
@@ -10,6 +11,20 @@ abstract class IApiRepository {
   Future<ApiResponse> login(String email, int otp);
 
   Future<ApiResponse> createPin(UpdatePasscodeRequest request);
+
+  Future<ApiResponse> createPassCode(CreatePasscodeRequest request);
+
+  Future<ApiResponse> featuredEvents();
+
+  Future<ApiResponse> upcomingEvents();
+
+  Future<ApiResponse> weekEndEvents();
+
+  Future<ApiResponse> getConfectionary();
+
+  Future<ApiResponse> createEvent();
+
+  Future<ApiResponse> addFeedBack(String message, int eventId);
 
   // Future<ApiResponse> verifyOTP(String otp, OTPType type, {int? userId});
   //
