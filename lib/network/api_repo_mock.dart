@@ -70,6 +70,12 @@ class ApiRepositoryMock extends IApiRepository {
     // TODO: implement createPassCode
     throw UnimplementedError();
   }
+
+  @override
+  Future<ApiResponse> checkPasscodeStatus(String email) {
+    // TODO: implement checkPasscodeStatus
+    throw UnimplementedError();
+  }
   // @override
   // Future<ApiResponse> createPassword(CreatePasswordRequestModel models,
   //     {int? userId}) async {

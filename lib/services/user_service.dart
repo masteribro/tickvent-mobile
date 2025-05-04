@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import '../app/app.locator.dart';
 import '../models/login_response.dart';
+import '../models/registered_user_response.dart';
 import '../ui/common/local_storage.dart';
 import '../ui/common/storage_dir.dart';
 
@@ -36,7 +39,33 @@ class UserService {
             updatedAt: userModel.data?.updatedAt));
 
     //store user data here
-    locator<LocalStorage>().save(StorageDir.currentUserId, userModel.data?.id);
+    locator<LocalStorage>().save(StorageDir.currentUserData, _currentUser);
+  }
+
+  void setCurrentUser(RegisteredUserResponse userModel) {
+    _currentUser = currentUser.copyWith(
+        data: UserData(
+            id: userModel.data?.id,
+            fullName: userModel.data?.fullName,
+            isAdmin: userModel.data?.isAdmin,
+            email: userModel.data?.email,
+            phoneNumber: userModel.data?.phoneNumber,
+            apiToken: userModel.data?.apiToken,
+            apiTestToken: userModel.data?.apiTestToken,
+            profileImg: userModel.data?.profileImg,
+            deviceToken: userModel.data?.deviceToken,
+            organizerName: userModel.data?.organizerImg,
+            organizerInfo: userModel.data?.organizerInfo,
+            organizerImg: userModel.data?.organizerImg,
+            location: userModel.data?.location,
+            emailVerifiedAt: userModel.data?.emailVerifiedAt,
+            phoneVerifiedAt: userModel.data?.phoneVerifiedAt,
+            profileImgUrl: userModel.data?.profileImgUrl,
+            createdAt: userModel.data?.createdAt,
+            updatedAt: userModel.data?.updatedAt, isVerified: '', passwordResetTime: null) );
+
+    //store user data here
+    locator<LocalStorage>().save(StorageDir.currentUserData, _currentUser);
   }
 
   // void setCustomerData(FetchCustomerDataResponseModel userModel) {

@@ -18,7 +18,7 @@ class EventService {
     ApiResponse response = await _apiRepo.featuredEvents();
     switch (response.responseStatus) {
       case ResponseStatus.successful:
-        return Right(response.data[messageKey]);
+        return Right(response.data);
       case ResponseStatus.operationFailed:
         return Left(response.data[messageKey]);
       case ResponseStatus.otherError:

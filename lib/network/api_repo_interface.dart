@@ -16,6 +16,8 @@ abstract class IApiRepository {
 
   Future<ApiResponse> featuredEvents();
 
+  Future<ApiResponse> checkPasscodeStatus(String email);
+
   Future<ApiResponse> upcomingEvents();
 
   Future<ApiResponse> weekEndEvents();

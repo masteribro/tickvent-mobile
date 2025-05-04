@@ -54,10 +54,8 @@ class HomeView extends StackedView<HomeViewModel> {
                             //     style: TextStyle(
                             //         fontSize: 15, color: kcLightGrey)),
                             Container(
-                              width: MediaQuery.of(context).size.width * 0.35,
-                              child: Text( locator<UserService>().currentUser.data?.email ?? viewModel.email
-                                  ??
-                                      "",
+                              width: MediaQuery.of(context).size.width * 0.3,
+                              child: Text( locator<UserService>().currentUser.data?.email ?? viewModel.user?.data?.email ?? viewModel.email ?? "",
                                   overflow: TextOverflow.ellipsis,
                                   style:  TextStyle(
                                       fontSize: 15.sp, fontWeight: FontWeight.bold)),
@@ -68,10 +66,10 @@ class HomeView extends StackedView<HomeViewModel> {
                     ),
                     Row(
                       children: [
-                        const Text("Switch to host",
-                            style: TextStyle(fontSize: 12, color: kcLightGrey)),
+                         Text("Switch to host",
+                            style: TextStyle(fontSize: 12.sp, color: kcLightGrey)),
                         Transform.scale(
-                          scale: 0.7,
+                          scale: 0.6,
                           child: Switch(
                             value: isSwitched,
                             onChanged: (value) {
@@ -95,7 +93,9 @@ class HomeView extends StackedView<HomeViewModel> {
                             },
                           ),
                         ),
-                        SvgPicture.asset("assets/bell.svg"),
+                        SvgPicture.asset("assets/bell.svg",
+                          width: 30.sp,
+                        ),
                       ],
                     )
                   ],
@@ -155,6 +155,8 @@ class HomeView extends StackedView<HomeViewModel> {
                   ],
                 ),
                 verticalSpaceMedium,
+                viewModel.events != null &&
+                viewModel.events!.length > 0?
                 Center(
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.42,
@@ -162,9 +164,8 @@ class HomeView extends StackedView<HomeViewModel> {
                     child: GridView.builder(
                       physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: 2,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
+                      itemCount: viewModel.events?.length,
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2, // Two columns
                         crossAxisSpacing: 8.0,
                         mainAxisSpacing: 8.0,
@@ -276,6 +277,20 @@ class HomeView extends StackedView<HomeViewModel> {
                       },
                     ),
                   ),
+                ): Container(
+                  height: 400.h,
+                  child: Center(
+                    child: Column(
+                      children: [
+                        SvgPicture.asset("assets/empty_calendar_icon.svg"),
+                        Text("No Event yet",
+                          style: TextStyle(fontSize: 20.sp,
+                          fontWeight: FontWeight.bold
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -293,13 +308,12 @@ class HomeView extends StackedView<HomeViewModel> {
 
   @override
   Future<void> onViewModelReady(HomeViewModel viewModel) async {
-    debugPrint("does it have passcode1${viewModel.isAlreadySet}");
-    debugPrint("does it have passcode2${await locator<LocalStorage>().fetch(StorageDir.isPassCodeSet)}");
+    viewModel.getFeaturedEvent();
     viewModel.email = await locator<LocalStorage>().fetch(StorageDir.userEmail);
-    viewModel.notifyListeners();
-
-    final isPassSet = await locator<LocalStorage>().fetch(StorageDir.isPassCodeSet);
-    if (!viewModel.isAlreadySet && isLogin == false) {
+    viewModel.user = await locator<LocalStorage>().fetch(StorageDir.currentUserData,);
+    bool passCode = await viewModel.checkPasscodeStatus(locator<UserService>().currentUser.data?.email ?? viewModel.user?.data?.email ?? viewModel.email ?? "");
+    debugPrint("Does the user have passcode: $passCode");
+    if (passCode == false) {
       SchedulerBinding.instance.addPostFrameCallback((_) {
         Future.delayed(const Duration(milliseconds: 300), () {
           if (viewModel.context.mounted && ModalRoute.of(viewModel.context)?.isCurrent == true) {
@@ -308,53 +322,67 @@ class HomeView extends StackedView<HomeViewModel> {
         });
       });
     }
+    viewModel.notifyListeners();
   }
 
 
-  void _showInputBottomSheet(context, HomeViewModel viewModel) {
+  void _showInputBottomSheet(context, HomeViewModel viewModel,) {
     showModalBottomSheet(
       context: context,
       isDismissible: false,
       enableDrag: false,
       isScrollControlled: true,
-      builder: (_) => Padding(
-        padding: EdgeInsets.only(
-          bottom: MediaQuery.of(context).viewInsets.bottom,
-          left: 16,
-          right: 16,
-          top: 24,
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text(
-              'Set Your Passcode',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 12),
-            Pinput(
-              length: 6,
-              controller: viewModel.passCodeController,
-            ),
-            const SizedBox(height: 16),
-            SubmitButton(
-                label: "Continue",
-                isLoading: viewModel.isBusy,
-                onTap: () {
-                  if (viewModel.passCodeController.text.trim().length == 6) {
-                    viewModel.setPassCode(
-                        CreatePasscodeRequest(
-                            email:
-                            viewModel.email ?? locator<SignInViewModel>().emailController.text,
-                            isMobile: true,
-                            passcode: int.parse(viewModel.passCodeController.text),
-                            passcodeConfirmation: int.parse(viewModel.passCodeController.text)),
-                        context);
-                  }
-                }),
-            const SizedBox(height: 24),
-          ],
-        ),
+      builder: (_) => StatefulBuilder(
+        builder: (BuildContext context, StateSetter setState) {
+      return Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+            left: 16,
+            right: 16,
+            top: 24,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text(
+                'Set Your Passcode',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 12),
+              Pinput(
+                length: 6,
+                controller: viewModel.passCodeController,
+                onChanged: (s) {
+                  setState(() {
+                    viewModel.passCode = s;
+                    debugPrint("passcode: ${viewModel.passCode}");
+                  });
+                },
+              ),
+              const SizedBox(height: 16),
+              SubmitButton(
+                  label: "Continue",
+                  isLoading: viewModel.isBusy,
+                  onTap: () {
+                    if (viewModel.passCode?.length == 6) {
+                      viewModel.setPassCode(
+                          CreatePasscodeRequest(
+                              email: locator<UserService>().currentUser.data?.email ?? viewModel.user?.data?.email ?? viewModel.email ??"",
+                              isMobile: true,
+                              passcode: int.parse(viewModel.passCode!),
+                              passcodeConfirmation: int.parse(viewModel.passCodeController.text)),
+                          context);
+                    } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Please enter a passcode')),
+          );
+          }
+          },
+                  ),
+              const SizedBox(height: 24),
+            ],
+          ),
+        );}
       ),
     );
   }

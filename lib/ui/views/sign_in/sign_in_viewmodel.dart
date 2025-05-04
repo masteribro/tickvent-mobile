@@ -28,8 +28,7 @@ class SignInViewModel extends BaseViewModel {
             .showFlushBar(variant: FlushBarType.failure, message: value.value);
       },
       ifRight: (value) async {
-        await locator<FlushBarService>()
-            .showFlushBar(variant: FlushBarType.success, message: value.value.message);
+        await locator<FlushBarService>().showFlushBar(variant: FlushBarType.success, message: value.value.message);
         locator<LocalStorage>().save(StorageDir.userEmail, value.value.data?.email);
         pageController.nextPage(
             duration: const Duration(seconds: 1), curve: Curves.easeIn);
@@ -47,6 +46,9 @@ class SignInViewModel extends BaseViewModel {
             .showFlushBar(variant: FlushBarType.failure, message: value.value);
       },
       ifRight: (value) async {
+        locator<UserService>().setCurrentUser(value.value);
+        locator<LocalStorage>().save(StorageDir.userEmail, value.value.data?.email);
+
         navigationService.navigateToView(const LandingPageManager());
       },
     );
@@ -65,7 +67,6 @@ class SignInViewModel extends BaseViewModel {
         isLogin = true;
         notifyListeners();
         locator<UserService>().setUser(value.value);
-        await locator<LocalStorage>().save(StorageDir.isPassCodeSet, true);
         final localStorage = locator<LocalStorage>();
         await localStorage.save(
             StorageDir.authToken, value.value.data?.apiToken);

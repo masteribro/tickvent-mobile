@@ -21,7 +21,7 @@ const Widget verticalSpaceMedium = SizedBox(height: _mediumSize);
 const Widget verticalSpaceLarge = SizedBox(height: _largeSize);
 const Widget verticalSpaceMassive = SizedBox(height: _massiveSize);
 
-var kDefaultTextStyle = TextStyle(
+var kDefaultTextStyle = const TextStyle(
   fontFamily: "Proxima Nova",
   fontSize: 14,
   fontWeight: FontWeight.w500,

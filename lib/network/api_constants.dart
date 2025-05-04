@@ -8,6 +8,7 @@ const String errorKey = "error";
 const String errors = "errors";
 const String userDetailsKey = "user details";
 const String messageKey = "message";
+const String statusKey = "status";
 
 ///TODO: change this later
 const String errorMessage =

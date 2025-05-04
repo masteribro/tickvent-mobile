@@ -81,6 +81,18 @@ class ApiRepositoryLive extends IApiRepository {
   }
 
   @override
+  Future<ApiResponse> checkPasscodeStatus(String email) async {
+    ApiResponse response = await locator<ApiService>().call(
+      method: HttpMethod.post,
+      endpoint: "/password-status",
+      reqBody: {
+        "email": email
+      },
+    );
+    return response;
+  }
+
+  @override
   Future<ApiResponse> featuredEvents() async {
     ApiResponse response = await locator<ApiService>().call(
       method: HttpMethod.get,

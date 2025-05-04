@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:stacked/stacked.dart';
 import 'package:tickvent/app/app.router.dart';
 
+import '../../../app/app.locator.dart';
+import '../../common/local_storage.dart';
+import '../../common/storage_dir.dart';
 import '../../common/ui_helpers.dart';
 import 'settings_viewmodel.dart';
 
@@ -20,7 +24,7 @@ class SettingsView extends StackedView<SettingsViewModel> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 10),
+          padding: EdgeInsets.only(left: 15.sp, right: 15.sp, top: 5.sp, bottom: 10.sp),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -444,11 +448,12 @@ class SettingsView extends StackedView<SettingsViewModel> {
                 GestureDetector(
                   onTap: (){
                     viewModel.navigationService.navigateToSignInView();
+                    locator<LocalStorage>().delete(StorageDir.authToken);
                   },
                   child: Row(
                     children: [
                       Container(
-                        height: MediaQuery.of(context).size.height * 0.1,
+                        height: MediaQuery.of(context).size.height * 0.15,
                         width: MediaQuery.of(context).size.width * 0.92,
                         decoration: BoxDecoration(
                           color: Color(0xffF3F4F6),
@@ -474,7 +479,6 @@ class SettingsView extends StackedView<SettingsViewModel> {
                                       ),
                                     ),
                                   ]),
-
                               Column(
                                 children: [
                                   Align(
@@ -494,7 +498,8 @@ class SettingsView extends StackedView<SettingsViewModel> {
                       )
                     ],
                   ),
-                )
+                ),
+                verticalSpaceSmall,
               ],
             ),
           ),
