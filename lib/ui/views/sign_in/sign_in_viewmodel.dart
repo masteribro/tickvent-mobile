@@ -32,6 +32,9 @@ class SignInViewModel extends BaseViewModel {
         locator<LocalStorage>().save(StorageDir.userEmail, value.value.data?.email);
         pageController.nextPage(
             duration: const Duration(seconds: 1), curve: Curves.easeIn);
+        // final localStorage = locator<LocalStorage>();
+        // await localStorage.save(
+        //     StorageDir.authToken, value.value.data.);
       },
     );
     setBusy(false);
@@ -48,6 +51,9 @@ class SignInViewModel extends BaseViewModel {
       ifRight: (value) async {
         locator<UserService>().setCurrentUser(value.value);
         locator<LocalStorage>().save(StorageDir.userEmail, value.value.data?.email);
+        final localStorage = locator<LocalStorage>();
+        await localStorage.save(
+            StorageDir.authToken, value.value.data?.apiToken);
 
         navigationService.navigateToView(const LandingPageManager());
       },

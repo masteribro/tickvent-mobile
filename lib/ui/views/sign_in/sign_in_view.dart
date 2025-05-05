@@ -9,6 +9,7 @@ import 'package:tickvent/ui/common/app_colors.dart';
 import 'package:tickvent/ui/common/sizer.dart';
 import 'package:tickvent/ui/views/landing_page/landing_page.dart';
 
+import '../../common/text_field.dart';
 import '../../common/ui_helpers.dart';
 import '../../component/submit_button.dart';
 import '../../component/text_field_widget.dart';
@@ -31,7 +32,7 @@ class SignInView extends StackedView<SignInViewModel> {
           child: Column(
             children: [
               verticalSpaceMedium,
-              SvgPicture.asset("assets/loginLogo.svg"),
+              SvgPicture.asset("assets/images/loginLogo.svg"),
               Container(
                 height: MediaQuery.of(context).size.height * 0.4,
                 child: PageView(
@@ -42,20 +43,20 @@ class SignInView extends StackedView<SignInViewModel> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          TextWidget(
                             "Sign Up",
-                            style: TextStyle(
-                                fontSize: 20.sp, fontWeight: FontWeight.bold),
+                            fontSize: 20.sp,
+                            weight: FontWeight.bold,
                           ),
                           verticalSpaceSmall,
-                          const Text(
+                          const TextWidget(
                             "Enter your email address and we will send you a verification code",
                             style: TextStyle(color: Colors.grey),
                           ),
                           verticalSpaceMedium,
                           const Align(
                               alignment: Alignment.centerLeft,
-                              child: Text(
+                              child: TextWidget(
                                 "Your email address",
                                 style: TextStyle(color: Colors.grey),
                               )),
@@ -81,7 +82,7 @@ class SignInView extends StackedView<SignInViewModel> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text(
+                              const TextWidget(
                                 "Do you have an account?",
                                 style: TextStyle(color: Colors.grey),
                               ),
@@ -89,7 +90,7 @@ class SignInView extends StackedView<SignInViewModel> {
                                 onTap: () {
                                   viewModel.pageController.jumpToPage(2);
                                 },
-                                child: const Text(
+                                child: const TextWidget(
                                   " Login",
                                   style: TextStyle(color: kcPrimaryColor),
                                 ),
@@ -173,7 +174,27 @@ class SignInView extends StackedView<SignInViewModel> {
                                   duration: const Duration(seconds: 1),
                                   curve: Curves.easeIn);
                             },
+                          ),
+                          verticalSpaceSmall,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const TextWidget(
+                                "Yet to have an account with us?",
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  viewModel.pageController.jumpToPage(0);
+                                },
+                                child: const TextWidget(
+                                  " Sign Up",
+                                  style: TextStyle(color: kcPrimaryColor),
+                                ),
+                              )
+                            ],
                           )
+
                         ],
                       ),
                     ),

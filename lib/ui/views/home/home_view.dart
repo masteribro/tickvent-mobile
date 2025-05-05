@@ -45,7 +45,7 @@ class HomeView extends StackedView<HomeViewModel> {
                   children: [
                     Row(
                       children: [
-                        Image.asset("assets/profile.png"),
+                        Image.asset("assets/images/profile.png"),
                         horizontalSpaceSmall,
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,7 +93,7 @@ class HomeView extends StackedView<HomeViewModel> {
                             },
                           ),
                         ),
-                        SvgPicture.asset("assets/bell.svg",
+                        SvgPicture.asset("assets/images/bell.svg",
                           width: 30.sp,
                         ),
                       ],
@@ -104,7 +104,7 @@ class HomeView extends StackedView<HomeViewModel> {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: SvgPicture.asset(
-                    "assets/loginLogo.svg",
+                    "assets/images/loginLogo.svg",
                     height: 150,
                     width: 150,
                   ),
@@ -188,7 +188,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                   borderRadius: BorderRadius.circular(
                                       15), // Rounded on all corners
                                   child: Image.asset(
-                                    "assets/carnival.png",
+                                    "assets/images/carnival.png",
                                     height: MediaQuery.of(context).size.height *
                                         0.18, // Half of the container's height
                                     width: double.infinity,
@@ -282,7 +282,7 @@ class HomeView extends StackedView<HomeViewModel> {
                   child: Center(
                     child: Column(
                       children: [
-                        SvgPicture.asset("assets/empty_calendar_icon.svg"),
+                        SvgPicture.asset("assets/images/empty_calendar_icon.svg"),
                         Text("No Event yet",
                           style: TextStyle(fontSize: 20.sp,
                           fontWeight: FontWeight.bold

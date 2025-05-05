@@ -23,6 +23,7 @@ class TextFieldWidget extends StatefulWidget {
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final int? maxLength;
+  final double? contentPaddingV;
   final double? height;
   final bool? readOnly;
   final FocusNode? focusNode;
@@ -52,7 +53,7 @@ class TextFieldWidget extends StatefulWidget {
       this.focusNode,
       this.borderSideColor,
       this.isPasswordField = false,
-      this.height})
+      this.height, this.contentPaddingV})
       : super(key: key);
 
   @override
@@ -99,7 +100,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
             hintText: widget.hintText,
             prefixIcon: widget.prefixIcon,
             contentPadding:
-                const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
+                 EdgeInsets.symmetric(vertical: widget.contentPaddingV ?? 20.0, horizontal: 20.0),
             labelText: widget.label,
             labelStyle: TextStyle(color: Colors.black, fontSize: 18),
             border: OutlineInputBorder(

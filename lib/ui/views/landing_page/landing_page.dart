@@ -51,7 +51,7 @@ class _LandingPageManagerState extends State<LandingPageManager> {
                   fontSize: 11,
                   color: selectedIndex == 0 ? kcPrimaryColor : kcLightGrey)),
           icon: SvgPicture.asset(
-            'assets/home.svg',
+            'assets/images/home.svg',
             color: selectedIndex == 0 ? kcPrimaryColor : kcLightGrey,
           ),
         ),
@@ -61,7 +61,7 @@ class _LandingPageManagerState extends State<LandingPageManager> {
                   fontSize: 11,
                   color: selectedIndex == 1 ? kcPrimaryColor : kcLightGrey,
                 )),
-            icon: SvgPicture.asset('assets/location.svg',
+            icon: SvgPicture.asset('assets/images/location.svg',
                 color: selectedIndex == 1 ? kcPrimaryColor : kcLightGrey)),
         CustomNavigationBarItem(
             title: Text("Host",
@@ -69,7 +69,7 @@ class _LandingPageManagerState extends State<LandingPageManager> {
                   fontSize: 11,
                   color: selectedIndex == 2 ? kcPrimaryColor : kcLightGrey,
                 )),
-            icon: SvgPicture.asset('assets/add.svg',
+            icon: SvgPicture.asset('assets/images/add.svg',
                 color: selectedIndex == 2 ? kcPrimaryColor : kcLightGrey)),
         CustomNavigationBarItem(
           title: Text("Ticket",
@@ -77,7 +77,7 @@ class _LandingPageManagerState extends State<LandingPageManager> {
                 fontSize: 11,
                 color: selectedIndex == 3 ? kcPrimaryColor : kcLightGrey,
               )),
-          icon: SvgPicture.asset('assets/ticket-star.svg',
+          icon: SvgPicture.asset('assets/images/ticket-star.svg',
               color: selectedIndex == 3 ? kcPrimaryColor : kcLightGrey),
         ),
         CustomNavigationBarItem(
@@ -88,7 +88,7 @@ class _LandingPageManagerState extends State<LandingPageManager> {
               color: selectedIndex == 4 ? kcPrimaryColor : kcLightGrey,
             ),
           ),
-          icon: SvgPicture.asset('assets/setting-2.svg',
+          icon: SvgPicture.asset('assets/images/setting-2.svg',
               color: selectedIndex == 4 ? kcPrimaryColor : kcLightGrey),
         ),
       ].whereType<CustomNavigationBarItem>().toList(), // Remove null values

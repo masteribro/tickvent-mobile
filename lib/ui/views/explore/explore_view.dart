@@ -31,7 +31,7 @@ class ExploreView extends StackedView<ExploreViewModel> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    SvgPicture.asset("assets/bell.svg"),
+                    SvgPicture.asset("assets/images/bell.svg"),
                   ],
                 ),
                 verticalSpaceMedium,
@@ -43,7 +43,7 @@ class ExploreView extends StackedView<ExploreViewModel> {
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
-                    SvgPicture.asset("assets/Iconbutton.svg"),
+                    SvgPicture.asset("assets/images/Iconbutton.svg"),
                   ],
                 ),
                 verticalSpaceMedium,
@@ -52,7 +52,7 @@ class ExploreView extends StackedView<ExploreViewModel> {
                   hintText: "Search Events here...",
                   suffixIcon: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: SvgPicture.asset("assets/trailingIcon.svg"),
+                    child: SvgPicture.asset("assets/images/trailingIcon.svg"),
                   ),
                   textInputType: TextInputType.text,
                 ),
@@ -121,7 +121,7 @@ class ExploreView extends StackedView<ExploreViewModel> {
                     Container(
                       child: Row(
                         children: [
-                          SvgPicture.asset("assets/info-circle.svg",
+                          SvgPicture.asset("assets/images/info-circle.svg",
                               width: 20, height: 20),
                           horizontalSpaceTiny,
                           Text("Sponsored",
@@ -164,7 +164,7 @@ class ExploreView extends StackedView<ExploreViewModel> {
                                     borderRadius: BorderRadius.circular(
                                         15), // Rounded on all corners
                                     child: Image.asset(
-                                      "assets/carnival.png",
+                                      "assets/images/carnival.png",
                                       height: MediaQuery.of(context)
                                               .size
                                               .height *
@@ -200,7 +200,7 @@ class ExploreView extends StackedView<ExploreViewModel> {
                                                   MainAxisAlignment.center,
                                               children: [
                                                 SvgPicture.asset(
-                                                    "assets/ticket.svg"),
+                                                    "assets/images/ticket.svg"),
                                                 horizontalSpaceTiny,
                                                 Text(
                                                   "20,000",
@@ -224,14 +224,14 @@ class ExploreView extends StackedView<ExploreViewModel> {
                                         horizontal: 8.0),
                                     child: Row(
                                       children: [
-                                        SvgPicture.asset("assets/calendar.svg"),
+                                        SvgPicture.asset("assets/images/calendar.svg"),
                                         const Text("Friday, June 6th",
                                             style: TextStyle(
                                                 fontSize: 11,
                                                 color: kcPrimaryColor,
                                                 fontWeight: FontWeight.bold)),
                                         SizedBox(width: 5),
-                                        SvgPicture.asset("assets/clock.svg"),
+                                        SvgPicture.asset("assets/images/clock.svg"),
                                         const Text("5:00pm",
                                             style: TextStyle(
                                                 fontSize: 11,
@@ -301,7 +301,7 @@ class ExploreView extends StackedView<ExploreViewModel> {
                                   borderRadius: BorderRadius.circular(
                                       15), // Rounded on all corners
                                   child: Image.asset(
-                                    "assets/carnival.png",
+                                    "assets/images/carnival.png",
                                     height: MediaQuery.of(context).size.height *
                                         0.26, // Half of the container's height
                                     width: double.infinity,
@@ -335,7 +335,7 @@ class ExploreView extends StackedView<ExploreViewModel> {
                                                 MainAxisAlignment.center,
                                             children: [
                                               SvgPicture.asset(
-                                                  "assets/ticket.svg"),
+                                                  "assets/images/ticket.svg"),
                                               horizontalSpaceTiny,
                                               Text(
                                                 "20,000",
@@ -359,14 +359,14 @@ class ExploreView extends StackedView<ExploreViewModel> {
                                       horizontal: 8.0),
                                   child: Row(
                                     children: [
-                                      SvgPicture.asset("assets/calendar.svg"),
+                                      SvgPicture.asset("assets/images/calendar.svg"),
                                       const Text("Friday, June 6th",
                                           style: TextStyle(
                                               fontSize: 11,
                                               color: kcPrimaryColor,
                                               fontWeight: FontWeight.bold)),
                                       SizedBox(width: 5),
-                                      SvgPicture.asset("assets/clock.svg"),
+                                      SvgPicture.asset("assets/images/clock.svg"),
                                       const Text("5:00pm",
                                           style: TextStyle(
                                               fontSize: 11,
@@ -430,7 +430,7 @@ class ExploreView extends StackedView<ExploreViewModel> {
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(15),
                                 child: Image.asset(
-                                  "assets/carnival.png",
+                                  "assets/images/carnival.png",
                                   height:
                                       MediaQuery.of(context).size.height * 0.18,
                                   width: double.infinity,
@@ -460,7 +460,7 @@ class ExploreView extends StackedView<ExploreViewModel> {
                                     const EdgeInsets.symmetric(horizontal: 8.0),
                                 child: Row(
                                   children: [
-                                    SvgPicture.asset("assets/calendar.svg"),
+                                    SvgPicture.asset("assets/images/calendar.svg"),
                                     const Text(
                                       "Friday, June 6th",
                                       style: TextStyle(
@@ -470,7 +470,7 @@ class ExploreView extends StackedView<ExploreViewModel> {
                                       ),
                                     ),
                                     SizedBox(width: 5),
-                                    SvgPicture.asset("assets/clock.svg"),
+                                    SvgPicture.asset("assets/images/clock.svg"),
                                     const Text(
                                       "5:00pm",
                                       style: TextStyle(
@@ -507,7 +507,7 @@ class ExploreView extends StackedView<ExploreViewModel> {
                                     const EdgeInsets.symmetric(horizontal: 8.0),
                                 child: Row(
                                   children: [
-                                    SvgPicture.asset("assets/ticket.svg"),
+                                    SvgPicture.asset("assets/images/ticket.svg"),
                                     const SizedBox(width: 2),
                                     const Text(
                                       "FREE",

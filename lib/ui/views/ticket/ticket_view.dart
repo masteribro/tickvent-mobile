@@ -27,7 +27,7 @@ class TicketView extends StackedView<TicketViewModel> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    SvgPicture.asset("assets/bell.svg"),
+                    SvgPicture.asset("assets/images/bell.svg"),
                   ],
                 ),
                 verticalSpaceMedium,
@@ -76,7 +76,7 @@ class TicketView extends StackedView<TicketViewModel> {
                                   Row(
                                     children: [
                                       SvgPicture.asset(
-                                        "assets/calendar.svg",
+                                        "assets/images/calendar.svg",
                                         color: kcWhite,
                                         width: 15,
                                         height: 15,
@@ -89,7 +89,7 @@ class TicketView extends StackedView<TicketViewModel> {
                                           )),
                                       const SizedBox(width: 5),
                                       SvgPicture.asset(
-                                        "assets/clock.svg",
+                                        "assets/images/clock.svg",
                                         color: kcWhite,
                                       ),
                                       SizedBox(width: 2),

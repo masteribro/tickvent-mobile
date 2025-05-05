@@ -47,7 +47,7 @@ class TextWidget extends StatelessWidget {
       height: height,
       fontSize: fontSize ?? 14.sp,
       fontStyle: fontStyle,
-      fontFamily: fontFamily ?? "GeneralSans",
+      fontFamily: fontFamily ?? "Proxima Nova",
       letterSpacing: letterSpacing ?? -0.5,)
         : style!.copyWith(
       color: color,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:stacked/stacked.dart';
 import 'package:tickvent/ui/common/ui_helpers.dart';
@@ -19,9 +20,9 @@ class StartupView extends StackedView<StartupViewModel> {
       backgroundColor: Color(0xFF6941C6),
       body: Center(
         child: SvgPicture.asset(
-          'assets/tickventLogo.svg',
-          width: 200,
-          height: 200,
+          'assets/images/tickventLogo.svg',
+          width: 200.w,
+          height: 200.h,
         ),
       ),
     );

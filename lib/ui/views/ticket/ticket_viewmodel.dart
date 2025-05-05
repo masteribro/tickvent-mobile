@@ -5,9 +5,9 @@ import 'package:tickvent/app/app.router.dart';
 class TicketViewModel extends BaseViewModel {
   final navigationService = NavigationService();
   List ticketList = [
-    "assets/coverImage.png",
-    "assets/coverImage2.png",
-    "assets/coverImage3.png"
+    "assets/images/coverImage.png",
+    "assets/images/coverImage2.png",
+    "assets/images/coverImage3.png"
   ];
 
   goToViewTicketView() {
