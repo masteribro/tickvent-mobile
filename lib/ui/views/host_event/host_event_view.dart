@@ -26,7 +26,7 @@ class HostEventView extends StackedView<HostEventViewModel> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                SvgPicture.asset("assets/bell.svg"),
+                SvgPicture.asset("assets/images/bell.svg"),
               ],
             ),
             verticalSpaceMedium,
@@ -58,7 +58,7 @@ class HostEventView extends StackedView<HostEventViewModel> {
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             )),
-                        SvgPicture.asset("assets/video.svg"),
+                        SvgPicture.asset("assets/images/video.svg"),
                       ],
                     ),
                     verticalSpaceSmall,
@@ -122,7 +122,7 @@ class HostEventView extends StackedView<HostEventViewModel> {
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               )),
-                          SvgPicture.asset("assets/routing.svg"),
+                          SvgPicture.asset("assets/images/routing.svg"),
                         ],
                       ),
                       verticalSpaceSmall,

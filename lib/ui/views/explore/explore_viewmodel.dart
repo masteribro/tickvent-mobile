@@ -9,23 +9,23 @@ class ExploreViewModel extends BaseViewModel {
   List categories = [
     {
       "title": "Music",
-      "icon": "assets/headphone.svg",
+      "icon": "assets/images/headphone.svg",
     },
     {
       "title": "Art",
-      "icon": "assets/pen-tool.svg",
+      "icon": "assets/images/pen-tool.svg",
     },
     {
       "title": "Expo",
-      "icon": "assets/lamp-charge.svg",
+      "icon": "assets/images/lamp-charge.svg",
     },
     {
       "title": "Education",
-      "icon": "assets/teacher.svg",
+      "icon": "assets/images/teacher.svg",
     },
     {
       "title": "Religion",
-      "icon": "assets/building.svg",
+      "icon": "assets/images/building.svg",
     },
   ];
 }

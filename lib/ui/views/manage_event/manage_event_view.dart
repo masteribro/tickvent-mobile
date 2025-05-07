@@ -36,7 +36,7 @@ class ManageEventView extends StackedView<ManageEventViewModel> {
                 children: [
                   Row(
                     children: [
-                      Image.asset("assets/profile.png"),
+                      Image.asset("assets/images/profile.png"),
                       horizontalSpaceSmall,
                       const Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,7 +80,7 @@ class ManageEventView extends StackedView<ManageEventViewModel> {
                           },
                         ),
                       ),
-                      SvgPicture.asset("assets/bell.svg"),
+                      SvgPicture.asset("assets/images/bell.svg"),
                     ],
                   )
                 ],
@@ -105,7 +105,7 @@ class ManageEventView extends StackedView<ManageEventViewModel> {
                                 fontWeight: FontWeight.bold)),
                         const SizedBox(width: 8),
                         SvgPicture.asset(
-                          "assets/clock.svg",
+                          "assets/images/clock.svg",
                           width: 20,
                           height: 20,
                         ),
@@ -145,7 +145,7 @@ class ManageEventView extends StackedView<ManageEventViewModel> {
                               "Interested ",
                               style: TextStyle(color: kcPrimaryColor),
                             ),
-                            SvgPicture.asset("assets/heart.svg")
+                            SvgPicture.asset("assets/images/heart.svg")
                           ],
                         ),
                         5.height,
@@ -180,7 +180,7 @@ class ManageEventView extends StackedView<ManageEventViewModel> {
                               "Ticket bought",
                               style: TextStyle(color: kcPrimaryColor),
                             ),
-                            SvgPicture.asset("assets/ticket_bought.svg")
+                            SvgPicture.asset("assets/images/ticket_bought.svg")
                           ],
                         ),
                         5.height,
@@ -276,7 +276,7 @@ class ManageEventView extends StackedView<ManageEventViewModel> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(11.9.r),
                             image: DecorationImage(
-                              image: AssetImage("assets/event_image1.png"),
+                              image: AssetImage("assets/images/event_image1.png"),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -289,8 +289,8 @@ class ManageEventView extends StackedView<ManageEventViewModel> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    SvgPicture.asset("assets/edit_image.svg"),
-                                    SvgPicture.asset("assets/delete_image.svg")
+                                    SvgPicture.asset("assets/images/edit_image.svg"),
+                                    SvgPicture.asset("assets/images/delete_image.svg")
                                   ],
                                 ),
                               ),

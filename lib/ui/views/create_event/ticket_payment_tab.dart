@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 
-class TicketPaymentTab extends StatefulWidget {
-  const TicketPaymentTab({super.key});
+import 'create_event_viewmodel.dart';
 
+class TicketPaymentTab extends StatefulWidget {
+  const TicketPaymentTab({super.key, required this.viewModel});
+  final CreateEventViewModel viewModel;
   @override
   State<TicketPaymentTab> createState() => _TicketPaymentTabState();
 }

@@ -6,11 +6,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tickvent/ui/common/app_colors.dart';
 import 'package:tickvent/ui/common/sizer.dart';
 import 'package:tickvent/ui/common/text_field.dart';
+import 'package:tickvent/ui/component/submit_button.dart';
 import 'package:tickvent/ui/component/text_field_widget.dart';
 
-class BasicDetailsTab extends StatefulWidget {
-  const BasicDetailsTab({super.key});
+import 'create_event_viewmodel.dart';
 
+class BasicDetailsTab extends StatefulWidget {
+  const BasicDetailsTab({super.key, required this.viewModel});
+  final CreateEventViewModel viewModel;
   @override
   State<BasicDetailsTab> createState() => _BasicDetailsTabState();
 }
@@ -202,9 +205,53 @@ class _BasicDetailsTabState extends State<BasicDetailsTab> {
                       ),
                       10.height,
                       TextFieldWidget(controller: TextEditingController(), textInputType: TextInputType.text ),
+                      20.height,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TextWidget(
+                            "Create Reminder",
+                            weight: FontWeight.w400,
+                            fontSize: 14.sp,
+                            color: const Color(0xff667085),
+                          ),
+                          TextWidget(
+                            "Add another reminder",
+                            weight: FontWeight.w600,
+                            fontSize: 14.sp,
+                            color:kcPrimaryColor,
+                          ),
+
+                        ],
+                      ),
+                      10.height,
+                      Container(
+                        height: 60.h,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(20.r)),
+                            color: kcWhite
+                        ),
+                      ),
+                      20.height,
+                      TextWidget(
+                        "All attendees will receive this reminder",
+                        weight: FontWeight.w400,
+                        fontSize: 14.sp,
+                        color: const Color(0xff667085),
+                      ),
                     ],
                   ),
                 ),
+              ),
+              30.height,
+              SubmitButton(label: "Continue",
+              onTap: (){
+                final tabController = DefaultTabController.of(context);
+                if (tabController != null) {
+                  tabController.animateTo(1); // index 1 for "Organizer Info"
+                }
+
+              },
               )
             ],
           ),

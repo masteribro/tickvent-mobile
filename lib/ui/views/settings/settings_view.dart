@@ -31,7 +31,7 @@ class SettingsView extends StackedView<SettingsViewModel> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    SvgPicture.asset("assets/bell.svg"),
+                    SvgPicture.asset("assets/images/bell.svg"),
                   ],
                 ),
                 verticalSpaceMedium,
@@ -61,7 +61,7 @@ class SettingsView extends StackedView<SettingsViewModel> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Image.asset("assets/profile.png"),
+                                    Image.asset("assets/images/profile.png"),
                                     horizontalSpaceSmall,
                                     Padding(
                                       padding: EdgeInsets.only(bottom: 20),
@@ -115,7 +115,7 @@ class SettingsView extends StackedView<SettingsViewModel> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    SvgPicture.asset("assets/bank.svg"),
+                                    SvgPicture.asset("assets/images/bank.svg"),
                                     horizontalSpaceSmall,
                                     Padding(
                                       padding: EdgeInsets.only(bottom: 20),
@@ -174,7 +174,7 @@ class SettingsView extends StackedView<SettingsViewModel> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    SvgPicture.asset("assets/ticket.svg",
+                                    SvgPicture.asset("assets/images/ticket.svg",
                                         color: Colors.black54,
                                         height: 30,
                                         width: 30),
@@ -232,7 +232,7 @@ class SettingsView extends StackedView<SettingsViewModel> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     SvgPicture.asset(
-                                        "assets/shield-security.svg"),
+                                        "assets/images/shield-security.svg"),
                                     horizontalSpaceSmall,
                                     Padding(
                                       padding: EdgeInsets.only(bottom: 20),
@@ -292,7 +292,7 @@ class SettingsView extends StackedView<SettingsViewModel> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     SvgPicture.asset(
-                                        "assets/direct-notification.svg"),
+                                        "assets/images/direct-notification.svg"),
                                     horizontalSpaceSmall,
                                     Padding(
                                       padding: EdgeInsets.only(bottom: 20),
@@ -346,7 +346,7 @@ class SettingsView extends StackedView<SettingsViewModel> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    SvgPicture.asset("assets/star.svg"),
+                                    SvgPicture.asset("assets/images/star.svg"),
                                     horizontalSpaceSmall,
                                     Padding(
                                       padding: EdgeInsets.only(bottom: 20),
@@ -404,7 +404,7 @@ class SettingsView extends StackedView<SettingsViewModel> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  SvgPicture.asset("assets/headphone.svg"),
+                                  SvgPicture.asset("assets/images/headphone.svg"),
                                   horizontalSpaceSmall,
                                   Padding(
                                     padding: EdgeInsets.only(bottom: 20),

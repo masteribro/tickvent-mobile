@@ -53,9 +53,9 @@ class CreateEventView extends StackedView<CreateEventViewModel> {
         ),
         body: TabBarView(
           children: [
-            BasicDetailsTab(),
-            OrganizerInfoTab(),
-            TicketPaymentTab(),
+            BasicDetailsTab(viewModel: viewModel,),
+            OrganizerInfoTab(viewModel: viewModel),
+            TicketPaymentTab(viewModel: viewModel),
           ],
         ),
 

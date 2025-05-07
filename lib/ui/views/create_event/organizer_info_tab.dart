@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 
-class OrganizerInfoTab extends StatefulWidget {
-  const OrganizerInfoTab({super.key});
+import 'create_event_viewmodel.dart';
 
+class OrganizerInfoTab extends StatefulWidget {
+  const OrganizerInfoTab({super.key, required this.viewModel});
+  final CreateEventViewModel viewModel;
   @override
   State<OrganizerInfoTab> createState() => _OrganizerInfoTabState();
 }

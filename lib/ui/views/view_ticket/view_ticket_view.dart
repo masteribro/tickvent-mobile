@@ -28,7 +28,7 @@ class ViewTicketView extends StackedView<ViewTicketViewModel> {
               decoration: const BoxDecoration(
                 image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage("assets/carnivalImage.jpg")),
+                    image: AssetImage("assets/images/carnivalImage.jpg")),
               ),
               child: Padding(
                 padding: EdgeInsets.only(left: 10, right: 10, top: 20),
@@ -49,7 +49,7 @@ class ViewTicketView extends StackedView<ViewTicketViewModel> {
                               color: kcDarkGreyColor,
                               weight: 60,
                             )),
-                        SvgPicture.asset("assets/bell.svg"),
+                        SvgPicture.asset("assets/images/bell.svg"),
                       ],
                     )
                   ],
@@ -65,7 +65,7 @@ class ViewTicketView extends StackedView<ViewTicketViewModel> {
                   child: Row(
                     children: [
                       SvgPicture.asset(
-                        "assets/calendar.svg",
+                        "assets/images/calendar.svg",
                         width: 20,
                         height: 20,
                       ),
@@ -76,7 +76,7 @@ class ViewTicketView extends StackedView<ViewTicketViewModel> {
                               fontWeight: FontWeight.bold)),
                       const SizedBox(width: 8),
                       SvgPicture.asset(
-                        "assets/clock.svg",
+                        "assets/images/clock.svg",
                         width: 20,
                         height: 20,
                       ),
@@ -200,7 +200,7 @@ class ViewTicketView extends StackedView<ViewTicketViewModel> {
               padding: EdgeInsets.only(left: 20, right: 20),
               child: Row(
                 children: [
-                  SvgPicture.asset("assets/locationIcon.svg"),
+                  SvgPicture.asset("assets/images/locationIcon.svg"),
                   SizedBox(
                     width: 5,
                   ),
@@ -215,7 +215,7 @@ class ViewTicketView extends StackedView<ViewTicketViewModel> {
               padding: EdgeInsets.only(left: 20, right: 20),
               child: Row(
                 children: [
-                  SvgPicture.asset("assets/heart-circle.svg"),
+                  SvgPicture.asset("assets/images/heart-circle.svg"),
                   SizedBox(
                     width: 5,
                   ),
@@ -257,7 +257,7 @@ class ViewTicketView extends StackedView<ViewTicketViewModel> {
                     child: Row(
                       children: [
                         SvgPicture.asset(
-                          "assets/ticket.svg",
+                          "assets/images/ticket.svg",
                           color: Colors.grey,
                           width: 25,
                           height: 25,
@@ -279,7 +279,7 @@ class ViewTicketView extends StackedView<ViewTicketViewModel> {
                     child: Row(
                       children: [
                         SvgPicture.asset(
-                          "assets/ticket.svg",
+                          "assets/images/ticket.svg",
                           color: Colors.grey,
                           width: 25,
                           height: 25,
@@ -372,7 +372,7 @@ class ViewTicketView extends StackedView<ViewTicketViewModel> {
                     ),
                   ),
                   SvgPicture.asset(
-                    "assets/deleteIcon.svg",
+                    "assets/images/deleteIcon.svg",
                   ),
                 ],
               ),
@@ -415,7 +415,7 @@ class ViewTicketView extends StackedView<ViewTicketViewModel> {
                     ),
                   ),
                   SvgPicture.asset(
-                    "assets/deleteIcon.svg",
+                    "assets/images/deleteIcon.svg",
                   ),
                 ],
               ),
@@ -458,7 +458,7 @@ class ViewTicketView extends StackedView<ViewTicketViewModel> {
                     ),
                   ),
                   SvgPicture.asset(
-                    "assets/deleteIcon.svg",
+                    "assets/images/deleteIcon.svg",
                   ),
                 ],
               ),
@@ -539,7 +539,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
             ),
             verticalSpaceSmall,
             Image.asset(
-              "assets/host.png",
+              "assets/images/host.png",
               height: 200,
               width: 200,
             ),
@@ -605,7 +605,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                             height: 100,
                             width: 300,
                             child:
-                                SvgPicture.asset("assets/backgroundCard.svg")),
+                                SvgPicture.asset("assets/images/backgroundCard.svg")),
                         const Padding(
                           padding: EdgeInsets.symmetric(horizontal: 8.0),
                           child: Row(
@@ -626,14 +626,14 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Row(
                             children: [
-                              SvgPicture.asset("assets/calendar.svg"),
+                              SvgPicture.asset("assets/images/calendar.svg"),
                               const Text("Friday, June 6th",
                                   style: TextStyle(
                                       fontSize: 10,
                                       color: kcPrimaryColor,
                                       fontWeight: FontWeight.bold)),
                               SizedBox(width: 5),
-                              SvgPicture.asset("assets/clock.svg"),
+                              SvgPicture.asset("assets/images/clock.svg"),
                               const Text("5:00pm",
                                   style: TextStyle(
                                       fontSize: 10,
@@ -667,7 +667,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Row(
                             children: [
-                              SvgPicture.asset("assets/ticket.svg"),
+                              SvgPicture.asset("assets/images/ticket.svg"),
                               const SizedBox(width: 2),
                               const Text("FREE",
                                   style: TextStyle(
